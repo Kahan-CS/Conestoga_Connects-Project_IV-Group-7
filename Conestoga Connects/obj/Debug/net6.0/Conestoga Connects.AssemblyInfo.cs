@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Conestoga Connects")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eabe760eac5fa1e2e7fa7677edb45fb53c3888d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Conestoga Connects")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Conestoga Connects")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

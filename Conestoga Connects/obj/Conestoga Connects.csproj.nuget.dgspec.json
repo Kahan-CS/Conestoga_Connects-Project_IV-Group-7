@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Devon\\source\\repos\\Conestoga Connects\\Conestoga Connects\\Conestoga Connects.csproj": {}
+    "C:\\Users\\Devon\\Source\\Repos\\COMP72070-24W-Sec2-Group-79\\Conestoga Connects\\Conestoga Connects.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Devon\\source\\repos\\Conestoga Connects\\Conestoga Connects\\Conestoga Connects.csproj": {
+    "C:\\Users\\Devon\\Source\\Repos\\COMP72070-24W-Sec2-Group-79\\Conestoga Connects\\Conestoga Connects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Devon\\source\\repos\\Conestoga Connects\\Conestoga Connects\\Conestoga Connects.csproj",
+        "projectUniqueName": "C:\\Users\\Devon\\Source\\Repos\\COMP72070-24W-Sec2-Group-79\\Conestoga Connects\\Conestoga Connects.csproj",
         "projectName": "Conestoga Connects",
-        "projectPath": "C:\\Users\\Devon\\source\\repos\\Conestoga Connects\\Conestoga Connects\\Conestoga Connects.csproj",
+        "projectPath": "C:\\Users\\Devon\\Source\\Repos\\COMP72070-24W-Sec2-Group-79\\Conestoga Connects\\Conestoga Connects.csproj",
         "packagesPath": "C:\\Users\\Devon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Devon\\source\\repos\\Conestoga Connects\\Conestoga Connects\\obj\\",
+        "outputPath": "C:\\Users\\Devon\\Source\\Repos\\COMP72070-24W-Sec2-Group-79\\Conestoga Connects\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
