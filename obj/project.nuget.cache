@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "wgJPpm7ePXc0JdKsS4GpIp2xucr5VO2SmutA24O2i9hPzzepD97eq/jT2qig/s9Pozb1f1Qmt3P5N29+zj2LJw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Devon\\source\\repos\\Conestoga Connects\\Conestoga Connects\\Conestoga Connects.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Devon\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\Devon\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\Devon\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\Devon\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.26\\microsoft.netcore.app.host.win-x64.6.0.26.nupkg.sha512"
+  ],
+  "logs": []
+}
