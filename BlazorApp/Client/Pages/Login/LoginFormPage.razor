@@ -1,12 +1,13 @@
 ﻿@page "/login"
 @inject NavigationManager NavigationManager
+
 @using BlazorApp.Shared
 @using BlazorApp.Client.Pages.Components
 
-<h1>Conestoga Connects</h1>
+<TitleComponent Title="Conestoga Connects" Level="1" />
 
 <EditForm Model="@loginForm" OnValidSubmit="HandleLogin">
-    <h3>Login</h3>
+    <TitleComponent Title="Login" Level="3"/>
     
     <TextInput Label="Username" Placeholder="Username" @bind-value="loginForm.Username"/>
     <TextInput Label="Password" Placeholder="Password" Type="password" @bind-value="loginForm.Password"/>
@@ -18,7 +19,7 @@
 <Link Href="/sign-up" Text="Sign-Up" AriaLabel="Sign up link" />
 
 @code {
-    private Login loginForm = new Login();
+    private LoginFormModel loginForm = new LoginFormModel();
     private void HandleLogin()
     {
         NavigationManager.NavigateTo("/home");//redirect to home page -- not implemented yet
