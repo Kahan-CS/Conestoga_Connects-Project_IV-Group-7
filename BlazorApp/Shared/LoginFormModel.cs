@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BlazorApp.Shared
 {
-    public class Login
+    public class LoginFormModel
     {
         [Required]
         [MinLength(5)] 
-        public string Username { get; set; }
+        public string ?Username { get; set; }
         [Required]
         [MinLength(10)]
-        public string Password { get; set; }
+        public string ?Password { get; set; }
     }
 }
