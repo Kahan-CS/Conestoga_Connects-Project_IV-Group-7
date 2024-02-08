@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<div>
+    <label for="@For">@Label</label>
+    <input type="@Type" value="@Value" @oninput="OnInput" placeholder="@Placeholder" id="@For" />
+</div>
+
+@code {
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public string Value { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter]
+    public string Placeholder { get; set; } = "Enter value";
+
+    [Parameter]
+    public string Type { get; set; } = "text";
+
+    [Parameter]
+    public string For { get; set; }
+
+    private Task OnInput(ChangeEventArgs e)
+    {
+        Value = e.Value.ToString();
+        return ValueChanged.InvokeAsync(Value);
+    }
+}
