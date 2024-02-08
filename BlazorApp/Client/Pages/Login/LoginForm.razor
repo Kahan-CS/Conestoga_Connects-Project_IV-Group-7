@@ -1,0 +1,27 @@
+﻿@page "/login"
+@inject NavigationManager NavigationManager
+@using BlazorApp.Shared
+@using BlazorApp.Client.Pages.Components
+
+<h1>Conestoga Connects</h1>
+
+<EditForm Model="@loginForm" OnValidSubmit="HandleLogin">
+    <h3>Login</h3>
+    
+    <TextInput Label="Username" Placeholder="Username" @bind-value="loginForm.Username"/>
+    <TextInput Label="Password" Placeholder="Password" Type="password" @bind-value="loginForm.Password"/>
+
+    <Button Text="Login" Type="submit"/>
+</EditForm>
+
+<Link Href="#" Text="Forgot Password?" AriaLabel="Forgot password link" />
+<Link Href="/sign-up" Text="Sign-Up" AriaLabel="Sign up link" />
+
+@code {
+    private Login loginForm = new Login();
+    private void HandleLogin()
+    {
+        NavigationManager.NavigateTo("/home");//redirect to home page -- not implemented yet
+    }
+}
+

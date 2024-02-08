@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<button class="button-style" @onclick="OnClick" type="@Type">@Text</button>
+
+@code {
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public EventCallback OnClick { get; set; } = EventCallback.Empty;
+
+    [Parameter]
+    public string Type { get; set; } = "button"; // Default to "button" to avoid unintended form submissions
+}
