@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<div> 
+    <label for="@Id">@Label</label>
+    <input type="@Type" value="@Value" @oninput="OnInput" placeholder="@Placeholder" id="@Id" />
+</div>
+
+@code {
+    [Parameter]
+    public string Label { get; set; } = "Label"; //This is the text that will be displayed
+
+    [Parameter]
+    public string Value { get; set; } = string.Empty; //This is the value of the input
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; } //This is the event that will be called when the value changes
+
+    [Parameter]
+    public string Placeholder { get; set; } = "Enter value"; //This is the placeholder text
+
+    [Parameter]
+    public string Type { get; set; } = "text"; //This is the type of input
+
+    [Parameter]
+    public string Id { get; set; } = "input"; //This is the id of the input
+
+    private Task OnInput(ChangeEventArgs e) 
+    {
+        if (e is null)
+            throw new ArgumentNullException(nameof(e));
+
+        Value = e.Value.ToString();
+        return ValueChanged.InvokeAsync(Value);
+    }
+}

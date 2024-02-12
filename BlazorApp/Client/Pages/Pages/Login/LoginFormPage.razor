@@ -2,21 +2,21 @@
 @inject NavigationManager NavigationManager
 
 @using BlazorApp.Shared
-@using BlazorApp.Client.Pages.Components
+@using BlazorApp.Client.Pages.PageComponents
 
 <TitleComponent Title="Conestoga Connects" Level="1" />
 
 <EditForm Model="@loginForm" OnValidSubmit="HandleLogin">
     <TitleComponent Title="Login" Level="3"/>
     
-    <TextInput Label="Username" Placeholder="Username" @bind-value="loginForm.Username"/>
-    <TextInput Label="Password" Placeholder="Password" Type="password" @bind-value="loginForm.Password"/>
+    <TextInputComponent Label="Username" Placeholder="Username" @bind-value="loginForm.Username" />
+    <TextInputComponent Label="Password" Placeholder="Password" Type="password" @bind-value="loginForm.Password" />
 
-    <Button Text="Login" Type="submit"/>
+    <ButtonComponent Text="Login" Type="submit"/>
 </EditForm>
 
-<Link Href="#" Text="Forgot Password?" AriaLabel="Forgot password link" />
-<Link Href="/sign-up" Text="Sign-Up" AriaLabel="Sign up link" />
+<LinkComponent Href="#" Text="Forgot Password?" AriaLabel="Forgot password link" />
+<LinkComponent Href="/sign-up" Text="Sign-Up" AriaLabel="Sign up link" />
 
 @code {
     private LoginFormModel loginForm = new LoginFormModel();

@@ -26,11 +26,12 @@
             <h1>@Title</h1>
             break;
     }
-}
+} <!-- 1. If the Title is not empty, then display the title with the level specified. If the level is not specified, then default to h1. -->
+
 
 @code {
     [Parameter]
-    public string Title { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty; //Default to empty string
 
     private int _level = 1; //Default to h1
 
