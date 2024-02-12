@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<button class="button-style" @onclick="OnClick" type="@Type">@Text</button>
+
+@code {
+    [Parameter]
+    public string Text { get; set; } = "Button"; //This is the text that will be displayed on the button
+
+    [Parameter]
+    public EventCallback OnClick { get; set; } = EventCallback.Empty; //This is the event that will be called when the button is clicked
+
+    [Parameter]
+    public string Type { get; set; } = "button"; //This is the type of button, e.g. submit, reset, button
+}

@@ -1,0 +1,31 @@
+﻿@page "/signup"
+@inject NavigationManager NavigationManager
+
+@using BlazorApp.Shared
+@using BlazorApp.Client.Pages.PageComponents
+
+<TitleComponent Title="Conestoga Connects" Level="1" />
+
+<EditForm Model="@signupForm" OnValidSubmit="HandleSignup">
+    <TitleComponent Title="Sign-Up" Level="3" />
+
+    <TextInputComponent Label="First Name" Placeholder="First Name" @bind-value="signupForm.FirstName"/>
+    <TextInputComponent Label="Last Name" Placeholder="Last Name" @bind-value="signupForm.LastName"/>
+    <TextInputComponent Label="Username" Placeholder="Username" @bind-value="signupForm.Username"/>
+    <TextInputComponent Label="Password" Placeholder="Password" Type="password" @bind-value="signupForm.Password"/>
+    <TextInputComponent Label="Confirm Password" Placeholder="Confirm Password" Type="password" @bind-value="signupForm.ConfirmPassword"/>
+    <TextInputComponent Label="Email" Placeholder="Email" @bind-value="signupForm.Email"/> 
+
+    <div class="form-group">
+        <ButtonComponent Text="Sign-Up" Type="submit"/>
+    </div>
+</EditForm>
+
+
+@code {
+    SignupFormModel signupForm = new SignupFormModel();
+    private void HandleSignup()
+    {
+        NavigationManager.NavigateTo("/login");//redirect to login page -- not implemented yet
+    }
+}
