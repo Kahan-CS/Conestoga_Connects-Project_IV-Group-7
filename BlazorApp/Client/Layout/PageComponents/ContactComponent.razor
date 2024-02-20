@@ -1,0 +1,22 @@
+﻿@using BlazorApp.Client.Layout.PageComponents
+
+<div class="contact">
+    <div class="contact-image">
+        <ProfileImageComponent ImageUrl="@ImageUrl" Size="50" />
+    </div>
+    <div class="contact-name">
+        <p><b>@Name</b></p>
+        <p class="intro-text">@IntroText</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string ImageUrl { get; set; }
+
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string IntroText { get; set; }
+}

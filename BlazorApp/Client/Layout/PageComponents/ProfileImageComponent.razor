@@ -1,0 +1,15 @@
+﻿@code {
+    [Parameter]
+    public string ImageUrl { get; set; }
+
+    [Parameter]
+    public int Size { get; set; } = 50; //Default size set to 50px, but can be overridden
+}
+
+<div style="@Style">
+    <img src="@ImageUrl" alt="Profile Picture" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+</div>
+
+@code {
+    private string Style => $"width: {Size}px; height: {Size}px; overflow: hidden; display: inline-block;";
+}
