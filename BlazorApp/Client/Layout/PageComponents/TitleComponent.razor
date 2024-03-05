@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Components
+
+@if (!string.IsNullOrWhiteSpace(Title))
+{
+    @switch (Level)
+    {
+        case 1:
+            <h1>@Title</h1>
+            break;
+        case 2:
+            <h2>@Title</h2>
+            break;
+        case 3:
+            <h3>@Title</h3>
+            break;
+        case 4:
+            <h4>@Title</h4>
+            break;
+        case 5:
+            <h5>@Title</h5>
+            break;
+        case 6:
+            <h6>@Title</h6>
+            break;
+        default:
+            <h1>@Title</h1>
+            break;
+    }
+} <!-- 1. If the Title is not empty, then display the title with the level specified. If the level is not specified, then default to h1. -->
+
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = string.Empty; //Default to empty string
+
+    private int _level = 1; //Default to h1
+
+    [Parameter]
+    public int Level
+    {
+        get => _level;
+        set => _level = (value < 1 || value > 6) ? 1 : value; //Ensure the heading level is between 1 and 6
+    }
+}
+

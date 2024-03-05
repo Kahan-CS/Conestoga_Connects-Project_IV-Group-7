@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #556c6d;
+}
+
+h1 {
+    color: #ffffff;
+    user-select: none;
+
+    letter-spacing: 2px;
+    margin-top: 20px;
+    font-size: 45px;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Poppins',sans-serif;
+}
+
+i {
+    margin-left:5px ;
+}
+
+form{
+    height: 520px;
+    left: 50%;
+    border-radius: 10px;
+    width: 500px;
+    margin-top: 30px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    text-align: center;
+    user-select: none;
+    font-weight: 500;
+    line-height: 42px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    user-select: none;
+}
+input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+::placeholder{
+    color: #e5e5e5;
+}
+
+.button-style {
+    display: inline-block; /* or 'block' depending on your layout */
+    margin-top: 50px;
+    width: 100%;
+    background-color: #eaeaea;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline from links */
+}
+
+button:hover{
+    background-color: #ffffff;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffffff;
+    user-select: none;
+}

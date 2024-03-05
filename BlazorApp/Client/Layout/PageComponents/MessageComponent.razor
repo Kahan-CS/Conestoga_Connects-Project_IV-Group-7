@@ -1,0 +1,48 @@
+﻿@using BlazorApp.Client.Layout.PageComponents;
+@code {
+    [Parameter]
+    public string Content { get; set; }
+
+    [Parameter]
+    public DateTime Time { get; set; }
+
+    [Parameter]
+    public bool IsSent { get; set; } // True for sent, false for received
+
+    [Parameter]
+    public string SenderName { get; set; } // Add this for the sender's name
+
+    [Parameter]
+    public string SenderProfileImageUrl { get; set; } // Add this for the sender's profile image URL
+
+    // Optional image within the message
+    [Parameter]
+    public string ImageUrl { get; set; }
+}
+
+<div class="message @(IsSent ? "message-sent" : "message-received")">
+    @if (!IsSent)
+    {
+        <div style="display: flex; align-items: center;">
+            <ProfileImageComponent ImageUrl="@SenderProfileImageUrl" Size="30" />
+            <div style="margin-left: 10px;">
+                <strong>@SenderName</strong>
+            </div>
+        </div>
+    }
+    <div class="message-text">
+        @if (!string.IsNullOrWhiteSpace(ImageUrl))
+        {
+            <img src="@ImageUrl" alt="Message Image" style="max-width: 100%; border-radius: 8px;">
+        }
+        <p>@Content</p>
+    </div>
+    <div class="message-time">
+        <p>@Time.ToString("t")</p>
+    </div>
+</div>
+
+
+
+
+

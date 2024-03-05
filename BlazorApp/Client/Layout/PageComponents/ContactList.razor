@@ -1,0 +1,21 @@
+﻿@using BlazorApp.Shared;
+@using BlazorApp.Client.Layout.PageComponents;
+
+@if (Contacts != null && Contacts.Any())
+{
+    <div class="contact-list">
+        @foreach (var contact in Contacts)
+        {
+            <ContactComponent ImageUrl="@contact.ImageUrl" Name="@contact.Name" IntroText="@contact.IntroText" />
+        }
+    </div>
+}
+else
+{
+    <p>No contacts available.</p>
+}
+
+@code {
+    [Parameter]
+    public List<ContactComponent> Contacts { get; set; }
+}
