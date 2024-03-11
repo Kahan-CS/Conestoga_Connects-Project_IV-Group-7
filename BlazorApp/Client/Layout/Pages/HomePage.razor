@@ -20,7 +20,7 @@
         </div>
             <div class="links">
                 <ul class="nav-links">
-                    <li><LinkComponent Href="/home" Icon="fas fa-home" Text=" Home" /></li>
+                    <li><LinkComponent Href="/home" Icon="fas fa-home" Text=" Home"/></li>
                     <li><LinkComponent Href="#groups" Text="Groups " Icon ="fas fa-users" /></li>
                     <li><LinkComponent Href="#settings" Text = "Settings " Icon ="fas fa-cog"/></li>
                     <li><LinkComponent Href="#profile" Text = "Profile " Icon ="fas fa-user"/></li>
@@ -30,166 +30,46 @@
     </nav>
 </header>
 
-
-
     <div class="container">
-        <div class="contact-list">
-           <!-- <TitleComponent Title =" Messages" Level ="3" class="container-title" class="fas fa-search"/>-->
-            <!-- Contacts will go here -->
-            <div class="scrollable">
-                <div class="contact">
-                    <div class="contact-image">
-                        <img src="/Assets/conestoga-college_logo.png" alt="Profile Picture">
-                    </div>
-                    <div class="contact-name">
-                        <p><b>BCS-GROUP</b></p>
-                        <p class="intro-text">Jon: Professor Ahmed is the best...</p>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-image">
-                        <img src="/Assets/conestoga-college_logo.png" alt="Profile Picture">
-                    </div>
-                    <div class="contact-name">
-                        <p><b>Project-IV-Group-7</b></p>
-                        <p class="intro-text">Kalp: I hate all of you...</p>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-image">
-                        <img src="/Assets/conestoga-college_logo.png" alt="Profile Picture">
-                    </div>
-                    <div class="contact-name">
-                        <p><b>User Experience II</b></p>
-                        <p class="intro-text">Gitesh: What is UX?? Never heard of it...</p>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-image">
-                        <img src="/Assets/MicrosoftTeams-image (2).png" alt="Profile Picture">
-                    </div>
-                    <div class="contact-name">
-                        <p>Devon</p>
-                        <p class="intro-text">Why does water taste green???...</p>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-image">
-                        <img src="/Assets/gitesh.jpg" alt="Profile Picture">
-                    </div>
-                    <div class="contact-name">
-                        <p>Gitesh</p>
-                        <p class="intro-text">Who the heck gave me this pfp...</p>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-image">
-                        <img src="/Assets/kalp.jpg" alt="Profile Picture">
-                    </div>
-                    <div class="contact-name">
-                        <p><b>Kalp</b></p>
-                        <p class="intro-text">What day of the week is it?...</p>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-image">
-                        <img src="/Assets/jon.jpeg" alt="Profile Picture">
-                    </div>
-                    <div class="contact-name">
-                        <p><b>Jonathon</b></p>
-                        <p class="intro-text">Dora the creator...</p>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-image">
-                        <img src="/Assets/kahan.jpeg" alt="Profile Picture">
-                    </div>
-                    <div class="contact-name">
-                        <p>Kahan</p>
-                        <p class="intro-text">Nxd5 hxg7...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <ContactList Contacts="@Contacts" /> <!-- To remove-->
+        <TitleComponent Title="Messages" class="container-title" Level="3"/>  
         <div class="conversation">
-            <div class="messages">
-                <h3 class="conversation-title">Conversation <i class="fas fa-search"></i></h3>
-                <div class="scrollable">
-                    <!-- Example of a sent message -->
-                    <div class="message message-sent">
-                        <div class="message-text">
-                            <img src="/Assets/MicrosoftTeams-image (1).png" alt="Profile Picture">
-                        </div>
-                        <div class="message-time">
-                            <p>10:30 AM</p>
-                        </div>
-                    </div>
-                    <!-- Example of a received message -->
-                    <div class="message message-received">
-                        <div class="message-text">
-                            <p>How are you?</p>
-                        </div>
-                        <div class="message-time">
-                            <p>10:31 AM</p>
-                        </div>
-                    </div>
-                    <div class="message message-sent">
-                        <div class="message-text">
-                            <p>Amazing!</p>
-                        </div>
-                        <div class="message-time">
-                            <p>10:30 AM</p>
-                        </div>
-                    </div>
-                    <div class="message message-received">
-                        <div class="message-text">
-                            <p>Im happy to hear that.</p>
-                        </div>
-                        <div class="message-time">
-                            <p>10:31 AM</p>
-                        </div>
-                    </div>
-                    <div class="message message-sent">
-                        <div class="message-text">
-                            <p>What have you gotten up to today?</p>
-                        </div>
-                        <div class="message-time">
-                            <p>10:30 AM</p>
-                        </div>
-                    </div>
-                    <div class="message message-received">
-                        <div class="message-text">
-                            <p>Just been working on some projects.</p>
-                        </div>
-                        <div class="message-time">
-                            <p>10:31 AM</p>
-                        </div>
-                    </div>
-                    <div class="message message-sent">
-                        <div class="message-text">
-                            <p>Sounds horrible</p>
-                        </div>
-                        <div class="message-time">
-                            <p>10:30 AM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <MessageComponent Messages="@MessageList"/>
             <!-- Text input for messaging -->
-            <form class="message-input-form">
-                <input type="text" class="message-input" placeholder="Type your message here...">
-                <button type="submit" class="send-message-button">Send</button>
-            </form>
+            <EditForm>Model = "@MessageList"  class="message-input-form"/>
+                <TextInputComponent Type = "text" class="message-input" Placeholder="Type your message here..."/>
+                <ButtonComponent Text="Send" OnClick="@SendMessage" class="send-message-button" />
+            </EditForm>
         </div>
+ 
     </div>
 </body>
     
 
 @code {
+   public List<ContactComponent> Contacts = new List<ContactComponent>
+        {
+            new ContactComponent { ImageUrl = "/Assets/conestoga-college_logo.png", Name = "BCS-GROUP", IntroText = "Jon: Professor Ahmed is the best..." },
+            new ContactComponent { ImageUrl = "/Assets/conestoga-college_logo.png", Name = "Project-IV-Group-7", IntroText = "Kalp: I hate all of you..." },
+            // Add more contacts 
+        };
+
+    List<MessageComponent> MessageList = new List<MessageComponent>
+        {
+            new MessageComponent { IsSent = true, Content = "Amazing!", Time = DateTime.Now.AddMinutes(-5) },
+            new MessageComponent { IsSent = false, Content = "Im happy to hear that.", Time = DateTime.Now.AddMinutes(-4) },
+            // Add more messages 
+        };
+
+    void SendMessage()
+    {
+        // Implement sending a message logic here
+
+    }
+
+
 
 }
-
 
 <style>
 
