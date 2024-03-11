@@ -24,6 +24,14 @@
 
     <LinkComponent Href="/sign-up" Text="Sign-Up" AriaLabel="Sign up link" class="sign-up" />
 
+        <TextInputComponent Label="Username" Placeholder="Username" Icon="fas fa-user" @bind-value="loginForm.Username" />
+        <TextInputComponent Label="Password" Placeholder="Password" Icon="fas fa-lock" Type="password" @bind-value="loginForm.Password" />
+    <LinkComponent Href="#" Text="Forgot Password?" AriaLabel="Forgot password link" class="forgot-password" />
+   
+    <ButtonComponent Text="Login" Type="submit" />  
+   
+    <LinkComponent Href="/sign-up" Text="Sign-Up" AriaLabel="Sign up link" class="sign-up" />
+
 </EditForm>
 
 </body>
