@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components
 
+
 @if (!string.IsNullOrWhiteSpace(Title))
 {
     @switch (Level)
@@ -28,6 +29,18 @@
     }
 } <!-- 1. If the Title is not empty, then display the title with the level specified. If the level is not specified, then default to h1. -->
 
+<style>
+    h1 {
+        color: #ffffff;
+        user-select: none;
+        letter-spacing: 2px;
+        margin-top: 200px;
+        font-size: 45px;
+        text-align: center;
+        font-weight: 600;
+        font-family: 'Poppins',sans-serif;
+    }
+</style>
 
 @code {
     [Parameter]
@@ -41,5 +54,6 @@
         get => _level;
         set => _level = (value < 1 || value > 6) ? 1 : value; //Ensure the heading level is between 1 and 6
     }
+
 }
 

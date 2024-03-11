@@ -1,0 +1,462 @@
+﻿@page "/home"
+@inject NavigationManager NavigationManager
+@using BlazorApp.Shared
+@using BlazorApp.Client.Layout.PageComponents
+
+<head>
+    <title>Conestoga Connects</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+
+<body>
+
+<header>
+    <!-- Navigation bar -->
+    <nav id="Navigation">
+        <div class=" title">
+                <TitleComponent Title="Conestoga Connects" Level="3"/>
+        </div>
+            <div class="links">
+                <ul class="nav-links">
+                    <li><LinkComponent Href="/home" Icon="fas fa-home" Text=" Home" /></li>
+                    <li><LinkComponent Href="#groups" Text="Groups " Icon ="fas fa-users" /></li>
+                    <li><LinkComponent Href="#settings" Text = "Settings " Icon ="fas fa-cog"/></li>
+                    <li><LinkComponent Href="#profile" Text = "Profile " Icon ="fas fa-user"/></li>
+                    <li><LinkComponent Href="/login" Text = "Logout " Icon ="fas fa-sign-out-alt"/></li>
+                </ul>
+            </div>
+    </nav>
+</header>
+
+
+
+    <div class="container">
+        <div class="contact-list">
+           <!-- <TitleComponent Title =" Messages" Level ="3" class="container-title" class="fas fa-search"/>-->
+            <!-- Contacts will go here -->
+            <div class="scrollable">
+                <div class="contact">
+                    <div class="contact-image">
+                        <img src="/Assets/conestoga-college_logo.png" alt="Profile Picture">
+                    </div>
+                    <div class="contact-name">
+                        <p><b>BCS-GROUP</b></p>
+                        <p class="intro-text">Jon: Professor Ahmed is the best...</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="contact-image">
+                        <img src="/Assets/conestoga-college_logo.png" alt="Profile Picture">
+                    </div>
+                    <div class="contact-name">
+                        <p><b>Project-IV-Group-7</b></p>
+                        <p class="intro-text">Kalp: I hate all of you...</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="contact-image">
+                        <img src="/Assets/conestoga-college_logo.png" alt="Profile Picture">
+                    </div>
+                    <div class="contact-name">
+                        <p><b>User Experience II</b></p>
+                        <p class="intro-text">Gitesh: What is UX?? Never heard of it...</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="contact-image">
+                        <img src="/Assets/MicrosoftTeams-image (2).png" alt="Profile Picture">
+                    </div>
+                    <div class="contact-name">
+                        <p>Devon</p>
+                        <p class="intro-text">Why does water taste green???...</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="contact-image">
+                        <img src="/Assets/gitesh.jpg" alt="Profile Picture">
+                    </div>
+                    <div class="contact-name">
+                        <p>Gitesh</p>
+                        <p class="intro-text">Who the heck gave me this pfp...</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="contact-image">
+                        <img src="/Assets/kalp.jpg" alt="Profile Picture">
+                    </div>
+                    <div class="contact-name">
+                        <p><b>Kalp</b></p>
+                        <p class="intro-text">What day of the week is it?...</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="contact-image">
+                        <img src="/Assets/jon.jpeg" alt="Profile Picture">
+                    </div>
+                    <div class="contact-name">
+                        <p><b>Jonathon</b></p>
+                        <p class="intro-text">Dora the creator...</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="contact-image">
+                        <img src="/Assets/kahan.jpeg" alt="Profile Picture">
+                    </div>
+                    <div class="contact-name">
+                        <p>Kahan</p>
+                        <p class="intro-text">Nxd5 hxg7...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="conversation">
+            <div class="messages">
+                <h3 class="conversation-title">Conversation <i class="fas fa-search"></i></h3>
+                <div class="scrollable">
+                    <!-- Example of a sent message -->
+                    <div class="message message-sent">
+                        <div class="message-text">
+                            <img src="/Assets/MicrosoftTeams-image (1).png" alt="Profile Picture">
+                        </div>
+                        <div class="message-time">
+                            <p>10:30 AM</p>
+                        </div>
+                    </div>
+                    <!-- Example of a received message -->
+                    <div class="message message-received">
+                        <div class="message-text">
+                            <p>How are you?</p>
+                        </div>
+                        <div class="message-time">
+                            <p>10:31 AM</p>
+                        </div>
+                    </div>
+                    <div class="message message-sent">
+                        <div class="message-text">
+                            <p>Amazing!</p>
+                        </div>
+                        <div class="message-time">
+                            <p>10:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="message message-received">
+                        <div class="message-text">
+                            <p>Im happy to hear that.</p>
+                        </div>
+                        <div class="message-time">
+                            <p>10:31 AM</p>
+                        </div>
+                    </div>
+                    <div class="message message-sent">
+                        <div class="message-text">
+                            <p>What have you gotten up to today?</p>
+                        </div>
+                        <div class="message-time">
+                            <p>10:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="message message-received">
+                        <div class="message-text">
+                            <p>Just been working on some projects.</p>
+                        </div>
+                        <div class="message-time">
+                            <p>10:31 AM</p>
+                        </div>
+                    </div>
+                    <div class="message message-sent">
+                        <div class="message-text">
+                            <p>Sounds horrible</p>
+                        </div>
+                        <div class="message-time">
+                            <p>10:30 AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Text input for messaging -->
+            <form class="message-input-form">
+                <input type="text" class="message-input" placeholder="Type your message here...">
+                <button type="submit" class="send-message-button">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+    
+
+@code {
+
+}
+
+
+<style>
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins',sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #556c6d;
+}
+
+header {
+    width: 100%;
+    height: 8vh;
+    background-color: #556c6d;
+    color: white;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px; 
+}
+
+.title h3 {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 2em;
+}
+
+.title h3 i {
+    margin-left: 15px; 
+    font-size: 1.2em; 
+}
+
+
+
+#Navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; 
+}
+
+.nav-links {
+    list-style-type: none;
+    font-weight: 500;
+    display: flex; 
+    padding: 0;
+    margin-top: 20px; 
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 10px; 
+    width: 8vw;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 30px;
+}
+
+.nav-links a i {
+    margin-right:10px; /* Adjust space between icon and text */
+}
+
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.13);
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 88vh;
+    margin-top: 20px;
+}
+
+.contact-list {
+    width: 30%;
+    background-color: #f3f3f3;
+    margin: 0 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-list h3 {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #556c6d;
+}
+
+.contact-list h3 i {
+    margin-left: 293px;
+}
+
+.contact-list h3 i:hover {
+    cursor: pointer;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-weight: 500;
+}
+
+.scrollable {
+    overflow-y: auto;
+    flex-grow: 1; /* Takes up the remaining space */
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+.contact:hover {
+    background-color: #dadada;
+    cursor: pointer;
+}
+
+
+.contact-image img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.conversation {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 60px);
+    width: 70%; 
+    background-color: #fff;
+    margin: 0 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.conversation h3 {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #556c6d;
+}
+
+
+.message-input-form {
+    margin-top: auto;
+    position: sticky;
+    background: #fff; 
+    padding: 10px; 
+    box-sizing: border-box;
+}
+
+.message-text img {
+    width: 150px;
+    height: 150px;
+}
+
+.message-input {
+    font-family: "Poppins", sans-serif;
+    width: calc(100% - 120px); 
+    height: 6vh; 
+    padding: 5px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+}
+
+.send-message-button {
+    font-family: "Poppins", sans-serif;
+    width: 100px; 
+    height: 5vh;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    border: 1px solid #616161;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-grow: 1; /* Takes up the remaining space */
+}
+
+.messages h3 {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #556c6d;
+}
+
+.messages h3 i {
+    margin-left: 839px;
+}
+
+.messages h3 i:hover {
+    cursor: pointer;
+}
+
+.send-message-button:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    word-wrap: break-word; 
+    word-break: break-word; 
+}
+
+.message-sent {
+    margin-left: auto;
+    background-color: #aed581;
+}
+
+.message-received {
+    margin-right: auto;
+    background-color: #fff;
+}
+
+.message-text {
+    margin-bottom: 5px;
+}
+
+.message-time {
+    align-self: flex-end;
+    font-size: 0.8em;
+    color: #666;
+}
+
+#blocked {
+    text-align: center;
+}
+</style>
+

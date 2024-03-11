@@ -1,9 +1,30 @@
 ﻿@using Microsoft.AspNetCore.Components
 
 <div> 
-    <label for="@Id">@Label</label>
+    <label for="@Id">@Label<i class="@Icon"></i></label>
     <input type="@Type" value="@Value" @oninput="OnInput" placeholder="@Placeholder" id="@Id" />
 </div>
+
+<style>
+    input {
+        display: block;
+        height: 60px;
+        width: 100%;
+        background-color: rgba(255,255,255,0.07);
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-bottom: 25px;
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    ::placeholder {
+        color: #e5e5e5;
+    }
+
+</style>
+
 
 @code {
     [Parameter]
@@ -20,6 +41,9 @@
 
     [Parameter]
     public string Type { get; set; } = "text"; //This is the type of input
+
+    [Parameter]
+    public string Icon { get; set; } = "text"; //This is the type of input
 
     [Parameter]
     public string Id { get; set; } = "input"; //This is the id of the input
