@@ -2,6 +2,27 @@
 
 <button class="button-style" @onclick="OnClick" type="@Type">@Text</button>
 
+ <style>
+    .button-style {
+        display: inline-block; /* or 'block' depending on your layout */
+        margin-top: 10px;
+        width: 100%;
+        background-color: #eaeaea;
+        color: #080710;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center; /* Center the text */
+        text-decoration: none; /* Remove underline from links */
+    }
+
+    button:hover {
+        background-color: #ffffff;
+    }
+</style> 
+
 @code {
     [Parameter]
     public string Text { get; set; } = "Button"; //This is the text that will be displayed on the button
