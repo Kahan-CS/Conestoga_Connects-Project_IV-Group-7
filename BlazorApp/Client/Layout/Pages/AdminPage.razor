@@ -1,0 +1,562 @@
+﻿@page "/admin"
+
+@using BlazorApp.Client.Layout.PageComponents
+
+<head>
+    <title>Conestoga Connects</title>
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+
+<style>
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins',sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #556c6d;
+}
+
+i {
+    margin-right:5px;
+}
+
+.available-accounts h3 {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #556c6d;
+}
+
+.nav-links {
+    list-style-type: none;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: 500;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav-links li {
+    display: inline;
+    text-align: center;
+}
+
+.nav-links a {
+    display: inline-block;
+    color: white;
+    width: 8.5vw;
+    margin-left: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 30px;
+}
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.13);
+}
+
+header {
+    width: 100%;
+    height: 8vh;
+    background-color: #556c6d;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 87vh;
+    margin-top: 20px;
+}
+
+    #admin-title {
+        position: absolute;
+        top: 40px; 
+        right: 20px; 
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-size: 30px;
+    }
+
+
+.admin-settings {
+    width: 20%;
+    background-color: #fff;
+    margin: 0 10px;
+    padding: 10px; 
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    overflow-y: auto;
+    font-family: 'Poppins', sans-serif; 
+    position: relative; 
+}
+
+.admin-settings h3 {
+    color: black;
+    font-size: 1.25em; 
+    position: absolute;
+    top: 10px; 
+    left: 10px; 
+    margin-bottom: 50px ;
+}
+
+
+.admin-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.admin-links li {
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-links li:nth-child(1) {
+    margin-top:40px;
+    border-top: 2px solid #556c6d;
+}
+
+.available-groups h3 {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #556c6d;
+}
+
+.available-groups h3 i {
+    margin-left: 442px
+}
+
+.available-groups h3 i:hover {
+    cursor: pointer;
+}
+.admin-links a {
+    display: block;
+    color: black;
+    font-weight: 500;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 10px;
+    text-align: left;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.07); 
+}
+
+.admin-links a:hover {
+    background-color: #dadada;
+}
+
+.option-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 10px 0; 
+}
+
+.option-container a {
+    flex-grow: 1; 
+    text-decoration: none; 
+    color: black; 
+    padding-right: 20px; 
+}
+
+.option-container img {
+    width: 20px; 
+    height: auto; 
+    margin-left: 10px; 
+}
+
+.available-accounts {
+    width: 39%;
+    background-color: #fff; 
+    margin: 0 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.available-accounts h3 i {
+    margin-left: 425px
+}
+
+.available-accounts h3 i:hover {
+    cursor: pointer;
+}
+
+
+.scrollable {
+    overflow-y: auto;
+    flex-grow: 1; /* Takes up the remaining space */
+}
+
+.available-accounts h3 {
+    color: black; 
+    font-size: 1.25em;
+}
+
+.account-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.account-item span {
+    flex: 1;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.account-list .account-item span,
+.group-list .group-item span {
+    color: #333; 
+    font-size: 1em; 
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    gap:10px;
+}
+
+.delete-button {
+    width: 45px; 
+    text-align: center;
+    font-size: 0.55em;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: #ff4d4d; 
+    color: white;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    line-height: 25px; 
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}
+
+.edit-button {
+    width: 45px; 
+    text-align: center;
+    font-size: 0.55em;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: #25d422; 
+    color: white;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; 
+    line-height: 25px; 
+}
+
+.edit-button:hover {
+    background-color: #1a9e17;
+}
+
+.view-button {
+    width: 45px; 
+    text-align: center;
+    font-size: 0.55em;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: #38bff0; 
+    color: white;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; 
+    line-height: 25px; 
+}
+
+.view-button:hover {
+    background-color: #2887a9;
+}
+
+.available-groups {
+    width: 39%;
+    background-color: #fff; 
+    margin: 0 10px;
+    padding: 10px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.available-groups h3 {
+    color: black; 
+    font-size: 1.25em;
+}
+
+.group-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.group-item span {
+    flex: 1;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.account-list .account-item span,
+.group-list .group-item span {
+    color: #333; 
+    font-size: 1em; 
+}
+
+.account-list .account-item span:hover,
+.group-list .group-item span:hover {
+    text-decoration: underline; 
+}
+
+
+
+.account-list .account-item:hover .delete-button,
+.group-list .group-item:hover .delete-button {
+    background-color: #ff4d4d; 
+}
+
+.account-list .account-item:hover .delete-button:hover,
+.group-list .group-item:hover .delete-button:hover {
+    background-color: #cc0000; 
+}
+
+</style>
+
+<header>
+    <nav id="Navigation">
+        <div>
+            <h3 id="admin-title">Admin Settings</h3>
+            <ul class="nav-links">
+                <li><a href="/home"><i class="fas fa-user"></i> Account</a></li>
+                <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="/login"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="admin-settings">
+        <h3>Settings</h3>
+        <ul class="admin-links">
+            <li><a href="#add-account"><i class="fas fa-user-plus"></i> Add Account</a></li>
+            <li><a href="#delete-account"><i class="fas fa-user-minus"></i> Delete Account</a></li>
+            <li><a href="#add-conversation"><i class="fas fa-comments"></i> Add Conversation</a></li>
+            <li><a href="#delete-conversation"><i class="fas fa-comment-slash"></i> Delete Conversation</a></li>
+            <li><a href="#add-group"><i class="fas fa-users"></i> Add Group</a></li>
+            <li><a href="#delete-group"><i class="fas fa-user-slash"></i> Delete Group</a></li>
+        </ul>
+    </div>
+
+    <div class="available-accounts">
+        <h3>Accounts<i class="fas fa-search"></i></h3>
+        <div class="scrollable">
+            <ul class="account-list">
+                <li class="account-item">
+                    <span>Alic3</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>Bob_the_builder</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>Dunkin</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>D0ug</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>Mandy_r_76</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>Oliver</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>Perez_h</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>Sarah12387</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>Shaun_Dog</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>Terry_f_86</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="account-item">
+                    <span>Willow</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="available-groups">
+        <h3>Groups <i class="fas fa-search"></i></h3>
+        <div class="scrollable">
+            <ul class="group-list">
+                <li class="group-item">
+                    <span>Plant-Life-Matters</span>
+                    <div class="button-container">
+                        <div class="delete-button">Delete</div>
+                        <div class="edit-button">Edit</div>
+                        <div class="view-button">View</div>
+                    </div>
+                </li>
+                <li class="group-item">
+                <span>Condors</span>
+                <div class="button-container">
+                    <div class="delete-button">Delete</div>
+                    <div class="edit-button">Edit</div>
+                    <div class="view-button">View</div>
+                </div>
+            </li>
+            <li class="group-item">
+                <span>Snake-Bit3</span>
+                <div class="button-container">
+                    <div class="delete-button">Delete</div>
+                    <div class="edit-button">Edit</div>
+                    <div class="view-button">View</div>
+                </div>
+            </li>
+            <li class="group-item">
+                <span>GYM_BROS_576</span>
+                <div class="button-container">
+                    <div class="delete-button">Delete</div>
+                    <div class="edit-button">Edit</div>
+                    <div class="view-button">View</div>
+                </div>
+            </li>
+            <li class="group-item">
+                <span>Dog Photos For Middle Aged Women</span>
+                <div class="button-container">
+                    <div class="delete-button">Delete</div>
+                    <div class="edit-button">Edit</div>
+                    <div class="view-button">View</div>
+                </div>
+            </li>
+            <li class="group-item">
+                <span>Chocolate Lovers</span>
+                <div class="button-container">
+                    <div class="delete-button">Delete</div>
+                    <div class="edit-button">Edit</div>
+                    <div class="view-button">View</div>
+                </div>
+            </li>
+            <li class="group-item">
+                <span>Politics</span>
+                <div class="button-container">
+                    <div class="delete-button">Delete</div>
+                    <div class="edit-button">Edit</div>
+                    <div class="view-button">View</div>
+                </div>
+            </li>
+            <li class="group-item">
+                <span>Cheese Enthusiasts</span>
+                <div class="button-container">
+                    <div class="delete-button">Delete</div>
+                    <div class="edit-button">Edit</div>
+                    <div class="view-button">View</div>
+                </div>
+            </li>
+            <li class="group-item">
+                <span>Job Search</span>
+                <div class="button-container">
+                    <div class="delete-button">Delete</div>
+                    <div class="edit-button">Edit</div>
+                    <div class="view-button">View</div>
+                </div>
+            </li>
+            <li class="group-item">
+                <span>Aliens are real</span>
+                <div class="button-container">
+                    <div class="delete-button">Delete</div>
+                    <div class="edit-button">Edit</div>
+                    <div class="view-button">View</div>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </div>
+</div>
