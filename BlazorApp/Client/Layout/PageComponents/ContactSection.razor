@@ -1,0 +1,42 @@
+﻿@using BlazorApp.Shared;
+@using BlazorApp.Client.Layout.PageComponents;
+
+<div class="ContactSection">
+    <TitleComponent Title="Messages" Level=3/>
+    <hr>
+    <ContactList Contacts="@contacts" Height="@Height" Width="@Width"/>
+</div>
+
+<style>
+.ContactSection 
+{
+    width: calc(@Width + 20px);
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 7px;
+    padding-bottom: 10px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+}
+
+
+.ContactSection hr 
+{
+    margin: 0;
+    border: 0;
+    border-top: 2px solid #000000;
+}
+</style>
+
+
+@code {
+    [Parameter]
+    public string Width { get; set; }
+
+    [Parameter]
+    public string Height { get; set; }
+
+    [Parameter]
+    public List<ContactModel> contacts { get; set; }
+
+}

@@ -1,0 +1,51 @@
+﻿@using BlazorApp.Shared;
+@using BlazorApp.Client.Layout.PageComponents;
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
+
+
+<div class="MessageSection">
+    <TitleComponent Title="Conversation" Level=3/>
+    <hr>
+    <MessageList Messages="@messages" Height="@Height" Width="@Width"/>
+</div>
+
+
+<style>
+.MessageSection 
+{
+    width: calc(@Width + 20px);
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.MessageSection hr 
+{
+    margin: 0;
+    border: 0;
+    border-top: 2px solid #000000;
+}
+
+
+</style>
+
+
+@code {
+    [Parameter]
+    public string Width { get; set; }
+
+    [Parameter]
+    public string Height { get; set; }
+
+    [Parameter]
+    public List<MessageModel> messages { get; set; }
+
+}
+

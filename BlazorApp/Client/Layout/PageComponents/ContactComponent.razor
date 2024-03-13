@@ -1,22 +1,58 @@
 ﻿@using BlazorApp.Client.Layout.PageComponents
+@using BlazorApp.Shared
 
-<div class="contact">
-    <div class="contact-image">
-        <ProfileImageComponent ImageUrl="@ImageUrl" Size="50" />
-    </div>
-    <div class="contact-name">
-        <p><b>@Name</b></p>
-        <p class="intro-text">@IntroText</p>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
+
+<div class="contact" @onclick="HandleClick">
+    <ProfileImageComponent ImageUrl="@contactModel.ImageUrl" Size="50px"/>
+    <div class="contact-name"> <!--Div used to display the element on two different lines-->
+        <p><b>@contactModel.Name</b></p>
+        <p class="intro-text">@contactModel.IntroText</p>
     </div>
 </div>
 
+<style>
+    .contact {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        font-weight: 500;
+    }
+    .intro-text {
+        font-size: 0.8em;
+    }
+    .contact img {
+        margin-right: 10px;
+    }
+    p {
+        margin: 2px;
+        font-family: 'Poppins', sans-serif;
+        user-select: none;
+    }
+
+    .contact:hover {
+        background-color: #f9f9f9;
+        cursor: pointer;
+    }
+</style>
+
 @code {
     [Parameter]
-    public string ImageUrl { get; set; }
+    public ContactModel contactModel { get; set; }
 
     [Parameter]
-    public string Name { get; set; }
+    public EventCallback OnClick { get; set; }
 
-    [Parameter]
-    public string IntroText { get; set; }
+    private async Task HandleClick()
+    {
+        Console.WriteLine("Contact Clicked");
+        await OnClick.InvokeAsync();
+    }
 }
+
+
+

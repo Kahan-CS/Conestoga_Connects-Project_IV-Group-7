@@ -6,16 +6,31 @@
     <div class="contact-list">
         @foreach (var contact in Contacts)
         {
-            <ContactComponent ImageUrl="@contact.ImageUrl" Name="@contact.Name" IntroText="@contact.IntroText" />
+            <ContactComponent contactModel="@contact"/>
         }
     </div>
 }
 else
 {
-    <p>No contacts available.</p>
+    ContactModel contact = new ContactModel() { Name = "Conestoga Connects", ImageUrl = "https://rnao.ca/sites/rnao-ca/files/Conestoga_college_logo_Colored_0.jpg", IntroText = "Please add some contacts to get the conversation started!" };
+    <ContactComponent contactModel="contact"/>
 }
+
+<style>
+    .contact-list {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: @Height;
+        width: @Width;
+    }
+</style>
 
 @code {
     [Parameter]
-    public List<ContactComponent> Contacts { get; set; }
+    public List<ContactModel> Contacts { get; set; }
+
+    [Parameter]
+    public string Width { get; set; }
+    [Parameter]
+    public string Height { get; set; }
 }
