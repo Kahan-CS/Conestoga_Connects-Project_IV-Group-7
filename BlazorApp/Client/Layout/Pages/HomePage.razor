@@ -15,56 +15,83 @@
 <header>
     <!-- Navigation bar -->
     <nav id="Navigation">
-        <div class=" title">
-                <TitleComponent Title="Conestoga Connects" Level="3"/>
+        <TitleComponent Title="Conestoga Connects" Level="1"/>
+        <div class = "Nav-Btns">
+            <NavButton Text="Home" Icon="fas fa-home" Href="/home"/>
+            <NavButton Text="Settings" Icon="fas fa-cog" Href="/settings"/>
+            <NavButton Text="Profile" Icon="fas fa-user" Href="/profile"/>
+            <NavButton Text="Logout" Icon="fas fa-sign-out-alt" Href="/logout"/>
         </div>
-            <div class="links">
-                <ul class="nav-links">
-                    <li><LinkComponent Href="/home" Icon="fas fa-home" Text=" Home"/></li>
-                    <li><LinkComponent Href="#groups" Text="Groups " Icon ="fas fa-users" /></li>
-                    <li><LinkComponent Href="#settings" Text = "Settings " Icon ="fas fa-cog"/></li>
-                    <li><LinkComponent Href="#profile" Text = "Profile " Icon ="fas fa-user"/></li>
-                    <li><LinkComponent Href="/login" Text = "Logout " Icon ="fas fa-sign-out-alt"/></li>
-                </ul>
-            </div>
     </nav>
 </header>
 
-    <div class="container">
-        <ContactList Contacts="@Contacts" /> <!-- To remove-->
-        <TitleComponent Title="Messages" class="container-title" Level="3"/>  
-        <div class="conversation">
-            <MessageComponent Messages="@MessageList"/>
-            <!-- Text input for messaging -->
-            <EditForm>Model = "@MessageList"  class="message-input-form"/>
-                <TextInputComponent Type = "text" class="message-input" Placeholder="Type your message here..."/>
-                <ButtonComponent Text="Send" OnClick="@SendMessage" class="send-message-button" />
-            </EditForm>
-        </div>
- 
-    </div>
+
+<div class="container">
+    <ContactSection contacts="@Contacts" Width="30vw" Height="81vh"/>
+    <MessageSection messages="@MessageList" Width="63.5vw" Height="81vh"/>
+</div>
+
+
+
+
 </body>
     
 
 @code {
-   public List<ContactComponent> Contacts = new List<ContactComponent>
-        {
-            new ContactComponent { ImageUrl = "/Assets/conestoga-college_logo.png", Name = "BCS-GROUP", IntroText = "Jon: Professor Ahmed is the best..." },
-            new ContactComponent { ImageUrl = "/Assets/conestoga-college_logo.png", Name = "Project-IV-Group-7", IntroText = "Kalp: I hate all of you..." },
-            // Add more contacts 
-        };
+    public List<ContactModel> Contacts = new List<ContactModel>()
+    {
+        new ContactModel() { Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Doe" },
+        new ContactModel() { Name = "Jane Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane Doe" },
+        new ContactModel() { Name = "John Smith", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Smith" },
+        new ContactModel() { Name = "Jane Smith", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane Smith" },
+        new ContactModel() { Name = "John Johnson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Johnson" },
+        new ContactModel() { Name = "Jane Johnson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane Johnson" },
+        new ContactModel() { Name = "John Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Brown" },
+        new ContactModel() { Name = "Jane Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane Brown" },
+        new ContactModel() { Name = "John White", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John White" },
+        new ContactModel() { Name = "Jane White", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane White" },
+        new ContactModel() { Name = "John Green", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Green" },
+        new ContactModel() { Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Doe" },
+        new ContactModel() { Name = "Jane Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane Doe" },
+        new ContactModel() { Name = "John Smith", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Smith" },
+        new ContactModel() { Name = "Jane Smith", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane Smith" },
+        new ContactModel() { Name = "John Johnson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Johnson" },
+        new ContactModel() { Name = "Jane Johnson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane Johnson" },
+        new ContactModel() { Name = "John Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Brown" },
+        new ContactModel() { Name = "Jane Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane Brown" },
+        new ContactModel() { Name = "John White", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John White" },
+        new ContactModel() { Name = "Jane White", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am Jane White" },
+        new ContactModel() { Name = "John Green", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Green" },
 
-    List<MessageComponent> MessageList = new List<MessageComponent>
-        {
-            new MessageComponent { IsSent = true, Content = "Amazing!", Time = DateTime.Now.AddMinutes(-5) },
-            new MessageComponent { IsSent = false, Content = "Im happy to hear that.", Time = DateTime.Now.AddMinutes(-4) },
-            // Add more messages 
-        };
+    };
+    public List<MessageModel> MessageList = new List<MessageModel>()
+    {
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+         new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+
+    };
 
     void SendMessage()
     {
         // Implement sending a message logic here
-
     }
 
 
@@ -83,260 +110,53 @@ body {
     margin: 0;
     overflow: hidden;
     font-family: 'Poppins',sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: #556c6d;
 }
 
 header {
     width: 100%;
-    height: 8vh;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 80px; /* Adjust the height as needed */
     background-color: #556c6d;
     color: white;
     display: flex;
-    align-items: center; 
-    justify-content: center; 
-    padding: 20px; 
+    align-items: center; /* Align items vertically to the center */
+    justify-content: left;
 }
-
-.title h3 {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    font-size: 2em;
-}
-
-.title h3 i {
-    margin-left: 15px; 
-    font-size: 1.2em; 
-}
-
-
 
 #Navigation {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; 
+    width: 98%;
+    padding: 0 20px; /* Add padding to the sides */
 }
 
-.nav-links {
-    list-style-type: none;
-    font-weight: 500;
-    display: flex; 
-    padding: 0;
-    margin-top: 20px; 
-    align-items: center;
-}
 
-.nav-links li {
-    margin-left: 10px; 
-    width: 8vw;
-}
-
-.nav-links a {
+.Nav-Btns {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: left;
-    padding: 14px 16px;
-    text-decoration: none;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 30px;
+    justify-content: space-between;
+    width: 35%;
 }
 
-.nav-links a i {
-    margin-right:10px; /* Adjust space between icon and text */
-}
-
-.nav-links a:hover {
-    background-color: rgba(255,255,255,0.13);
+button {
+    margin-left: 15px;
 }
 
 .container {
     display: flex;
-    width: 100%;
-    height: 88vh;
-    margin-top: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px; /* Adjust padding as needed */
+    gap: 1vw; 
+    margin-top: 50px;
+    margin-left: -1vw;
 }
 
-.contact-list {
-    width: 30%;
-    background-color: #f3f3f3;
-    margin: 0 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-list h3 {
-    padding-bottom: 10px;
-    border-bottom: 2px solid #556c6d;
-}
-
-.contact-list h3 i {
-    margin-left: 293px;
-}
-
-.contact-list h3 i:hover {
-    cursor: pointer;
-}
-
-.contact {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-weight: 500;
-}
-
-.scrollable {
-    overflow-y: auto;
-    flex-grow: 1; /* Takes up the remaining space */
-}
-
-.intro-text {
-    text-align: center;
-    font-size: 0.85em;
-    font-weight: 500;
-}
-.contact:hover {
-    background-color: #dadada;
-    cursor: pointer;
-}
+/* Adjust the styles for ContactSection and MessageSection if needed */
 
 
-.contact-image img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.conversation {
-    display: flex;
-    flex-direction: column;
-    max-height: calc(100vh - 60px);
-    width: 70%; 
-    background-color: #fff;
-    margin: 0 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-.conversation h3 {
-    padding-bottom: 10px;
-    border-bottom: 2px solid #556c6d;
-}
-
-
-.message-input-form {
-    margin-top: auto;
-    position: sticky;
-    background: #fff; 
-    padding: 10px; 
-    box-sizing: border-box;
-}
-
-.message-text img {
-    width: 150px;
-    height: 150px;
-}
-
-.message-input {
-    font-family: "Poppins", sans-serif;
-    width: calc(100% - 120px); 
-    height: 6vh; 
-    padding: 5px;
-    margin-right: 10px;
-    box-sizing: border-box;
-    border-radius: 15px;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1em;
-}
-
-.send-message-button {
-    font-family: "Poppins", sans-serif;
-    width: 100px; 
-    height: 5vh;
-    font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 15px;
-    background-color: #e0e0e0;
-    border: 1px solid #616161;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1em;
-}
-
-.messages {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    flex-grow: 1; /* Takes up the remaining space */
-}
-
-.messages h3 {
-    padding-bottom: 10px;
-    border-bottom: 2px solid #556c6d;
-}
-
-.messages h3 i {
-    margin-left: 839px;
-}
-
-.messages h3 i:hover {
-    cursor: pointer;
-}
-
-.send-message-button:hover {
-    background-color: #d3d3d3;
-    cursor: pointer;
-}
-
-.message {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    max-width: 80%;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 15px;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    word-wrap: break-word; 
-    word-break: break-word; 
-}
-
-.message-sent {
-    margin-left: auto;
-    background-color: #aed581;
-}
-
-.message-received {
-    margin-right: auto;
-    background-color: #fff;
-}
-
-.message-text {
-    margin-bottom: 5px;
-}
-
-.message-time {
-    align-self: flex-end;
-    font-size: 0.8em;
-    color: #666;
-}
-
-#blocked {
-    text-align: center;
-}
 </style>
 
