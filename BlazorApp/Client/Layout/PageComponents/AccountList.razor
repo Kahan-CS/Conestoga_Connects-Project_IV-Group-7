@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Components
+@using BlazorApp.Shared;
+@using BlazorApp.Client.Layout.PageComponents;
+
+<div class="account-list">
+    @foreach (var account in Accounts)
+    {
+        <AccountComponent Name="@account.Name" />
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<AccountComponent> Accounts { get; set; }
+}

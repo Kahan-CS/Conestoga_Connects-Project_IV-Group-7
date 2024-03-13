@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<div class="group-item">
+    <span>@Name</span>
+    <div class="button-container">
+        <div class="delete-button">Delete</div>
+        <div class="edit-button">Edit</div>
+        <div class="view-button">View</div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+}

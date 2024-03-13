@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Components
+@using BlazorApp.Shared 
+@using BlazorApp.Client.Layout.PageComponents;
+
+<div class="group-list">
+    @foreach (var group in Groups)
+    {
+        <GroupComponent Name="@group.Name" />
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<GroupComponent> Groups { get; set; }
+}
