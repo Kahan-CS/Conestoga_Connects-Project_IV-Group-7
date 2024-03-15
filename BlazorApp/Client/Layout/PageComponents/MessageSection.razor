@@ -1,39 +1,55 @@
-﻿@using BlazorApp.Shared;
-@using BlazorApp.Client.Layout.PageComponents;
+﻿@using BlazorApp.Shared
+@using BlazorApp.Client.Layout.PageComponents
 
 <head>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 </head>
 
-
 <div class="MessageSection">
     <TitleComponent Title="Conversation" Level=3/>
     <hr>
-    <MessageList Messages="@messages" Height="@Height" Width="@Width"/>
+    <div class="MessageListContainer">
+        <MessageList Messages="@messages" Height="@Height" Width="@Width"/>
+    </div>
+    <div class="MessageSendAreaContainer">
+        <MessageSendArea/>
+    </div>
 </div>
 
-
 <style>
-.MessageSection 
-{
-    width: calc(@Width + 20px);
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
+    .MessageSection 
+    {
+        position: relative;
+        width: calc(@Width + 20px);
+        background-color: #fff;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: column;
+        height:88vh;
+    }
 
-.MessageSection hr 
-{
-    margin: 0;
-    border: 0;
-    border-top: 2px solid #000000;
-}
+    .MessageSection hr 
+    {
+        margin: 0;
+        border: 0;
+        border-top: 2px solid #000000;
+    }
 
+    .MessageListContainer {
+        flex-grow: 1; /* Grow to fill available space */
+        overflow-y: scroll; /* Enable vertical scrolling if needed */
+        overflow-x: hidden; /* Disable horizontal scrolling */
+    }
 
+    .MessageSendAreaContainer {
+        padding: 0px;
+        background-color: #fff;
+    }
 </style>
 
 
