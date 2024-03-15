@@ -3,16 +3,12 @@
 
 @if (Contacts != null && Contacts.Any())
 {
-    <div class="contact-list">
+        <div class="contact-list">
         @foreach (var contact in Contacts)
         {
-            <ContactComponent contactModel="@contact"/>
+            <FriendComponent contactModel="@contact"/>
         }
-
-        @if (Contacts.Count == 0)
-        {
-        }
-    </div>
+        </div>
 }
 
 <style>

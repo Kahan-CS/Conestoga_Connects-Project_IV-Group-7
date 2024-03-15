@@ -10,11 +10,11 @@
      <div class="ContactListContainer">
         @if (FilteredContacts != null && FilteredContacts.Any())
         {
-                <ContactList Contacts="@FilteredContacts" Height="@Height" Width="@Width"/>
+                    <FriendList Contacts="@FilteredContacts" Height="@Height" Width="@Width"/>
         }
         else
         {
-                <div class="EmptyListMessage">No results...</div>
+                    <div class="EmptyListMessage">No results...</div>
         }
     </div>
 </div>

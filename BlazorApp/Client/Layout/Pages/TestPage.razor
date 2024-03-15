@@ -9,80 +9,35 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
-<body>
-    <header>
-        <NavBar/>
-    </header>
-    <div class="container">
-        <ContactSection contacts="@friends" Title="Friends" Width="30vw" Height="70vh"/>
-        <ContactSection contacts="@groups" Title="Goups" Width="30vw" Height="70vh"/>
-    </div>
-</body>
+
+
+<FriendSection Contacts="@Contacts" Title="Friends" Width="30vw" Height="80vh" />
+
 
 @code {
+    public List<ContactModel> Contacts = new List<ContactModel>()
+{
+    new ContactModel() { Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Jane Smith", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Michael Johnson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Emily Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "William Jones", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Olivia Taylor", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "James Wilson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Sophia Martinez", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Benjamin Anderson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Isabella Thomas", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Ethan Jackson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Mia White", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Alexander Harris", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Charlotte Martin", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Noah Thompson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Amelia Garcia", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Liam Martinez", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Ava Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Lucas Wilson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Emma Taylor", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" }
+};
 
-    List<ContactModel> friends = new List<ContactModel>()
-    {
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-    };
-
-    List<ContactModel> groups = new List<ContactModel>()
-    {
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-    };
 }
-
-<style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    user-select: none;
-    background-color: #556c6d;
-}
-.container {
-        margin-top: 80px;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-    }
-header {
-    width: 100%;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    height: 80px; /* Adjust the height as needed */
-    background-color: #556c6d;
-    color: white;
-    display: flex;
-    align-items: center; /* Align items vertically to the center */
-    justify-content: left;
-}
-</style>
 
