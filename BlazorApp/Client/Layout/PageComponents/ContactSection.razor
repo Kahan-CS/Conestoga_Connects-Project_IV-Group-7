@@ -2,32 +2,44 @@
 @using BlazorApp.Client.Layout.PageComponents;
 
 <div class="ContactSection">
-    <TitleComponent Title="Messages" Level=3/>
+    <div class="ContactHeader">
+        <TitleComponent Title="@Title" Level=3/>
+        <input type="text" class="SearchInput" @bind="SearchQuery" placeholder="Search..." @oninput="HandleSearchInput" />
+    </div>
     <hr>
-    <ContactList Contacts="@contacts" Height="@Height" Width="@Width"/>
+    <ContactList Contacts="@FilteredContacts" Height="@Height" Width="@Width"/>
 </div>
 
 <style>
-.ContactSection 
-{
-    width: calc(@Width + 20px);
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 7px;
-    padding-bottom: 10px;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-}
+    .ContactSection 
+    {
+        width: calc(@Width + 20px);
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+    }
 
+    .ContactHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.ContactSection hr 
-{
-    margin: 0;
-    border: 0;
-    border-top: 2px solid #000000;
-}
+    .SearchInput {
+        width: 200px;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        margin-bottom: 4px;
+    }
+
+    .ContactSection hr 
+    {
+        margin: 0;
+        border: 0;
+        border-top: 2px solid #000000;
+    }
 </style>
-
 
 @code {
     [Parameter]
@@ -37,6 +49,42 @@
     public string Height { get; set; }
 
     [Parameter]
-    public List<ContactModel> contacts { get; set; }
+    public string Title { get; set; }
 
+    [Parameter]
+    public List<ContactModel> Contacts { get; set; }
+
+    private Timer debounceTimer; //Timer to limit the number of search requests that are done 
+
+    private string SearchQuery { get; set; } = ""; //The search query entered by the user
+
+    private List<ContactModel> FilteredContacts { get; set; } //The contacts that match the search query
+
+    protected override void OnInitialized()
+    {
+        FilteredContacts = Contacts.ToList(); // Initialize with all contacts
+    }
+
+    private void HandleSearchInput(ChangeEventArgs e)
+    {
+        SearchQuery = e.Value.ToString();
+
+        if (debounceTimer != null)
+        {
+            debounceTimer.Dispose();
+        }
+
+        debounceTimer = new Timer(state =>
+        {
+            SearchContacts();
+            StateHasChanged(); // Update the UI
+        }, null, 300, Timeout.Infinite);
+    }
+
+    private void SearchContacts()
+    {
+        FilteredContacts = Contacts
+            .Where(c => string.IsNullOrWhiteSpace(SearchQuery) || c.Name.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
 }
