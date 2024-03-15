@@ -1,4 +1,7 @@
-﻿<img src = "@ImageUrl" class = "contact-img"/>
+﻿@if (ImageUrl != null) //If the image is not null, display the image
+{
+    <img src="@ImageUrl" class="contact-img" />
+}
 
 @code {
     [Parameter]
