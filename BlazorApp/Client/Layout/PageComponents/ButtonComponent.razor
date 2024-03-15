@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 </head>
 
-<button class="button-style" @onclick="OnClick" type="@Type">@Text</button>
+<button class="button-style" type="@Type">@Text</button>
 
  <style>
     .button-style {
@@ -16,7 +16,7 @@
         height: @Height;
         color: @textColor;
         padding: 10px;
-        font-size: 18px;
+        font-size: @FontSize;
         font-weight: 600;
         border-radius: 5px;
         cursor: pointer;
@@ -58,6 +58,5 @@
 
     [Parameter]
     public string BorderRadius { get; set; } = "5px"; //Default to 5px
-
 
 }
