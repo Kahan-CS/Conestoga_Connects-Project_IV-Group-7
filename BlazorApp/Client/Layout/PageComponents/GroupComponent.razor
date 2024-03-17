@@ -9,7 +9,83 @@
     </div>
 </div>
 
+
 @code {
     [Parameter]
     public string Name { get; set; }
 }
+
+
+<style>
+
+    .group-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+        .group-item span {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    .button-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .delete-button {
+        width: 45px;
+        text-align: center;
+        font-size: 0.55em;
+        padding: 5px 10px;
+        border-radius: 3px;
+        background-color: #ff4d4d;
+        color: white;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        line-height: 25px;
+    }
+
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+
+    .edit-button {
+        width: 45px;
+        text-align: center;
+        font-size: 0.55em;
+        padding: 5px 10px;
+        border-radius: 3px;
+        background-color: #25d422;
+        color: white;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        line-height: 25px;
+    }
+
+        .edit-button:hover {
+            background-color: #1a9e17;
+        }
+
+    .view-button {
+        width: 45px;
+        text-align: center;
+        font-size: 0.55em;
+        padding: 5px 10px;
+        border-radius: 3px;
+        background-color: #38bff0;
+        color: white;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        line-height: 25px;
+    }
+
+        .view-button:hover {
+            background-color: #2887a9;
+        }
+</style>
