@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Components.Forms
 @using System.IO
+@using BlazorApp.Shared
+@using Microsoft.AspNetCore.SignalR.Client;
 @inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
 
 <head>
     <title>Conestoga Connects</title>
@@ -84,14 +87,39 @@
 </style>
 
 @code {
+    public HubConnection? hubConnection;
+    private async Task Connect()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+            .Build();
+
+        await hubConnection.StartAsync();
+
+    }
     public string Message { get; set; }
     private IBrowserFile SelectedImage { get; set; }
 
-    public void SendMessage()
+
+    public async Task SendMessage() 
     {
-        if (string.IsNullOrWhiteSpace(Message))
-            return;
-        //TODO: Send message
+        if (hubConnection != null)
+        {
+            MessageModel model = new MessageModel()
+            {
+                Content = Message,
+                IsSent = true,
+                Time = DateTime.Now,
+                SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"
+            };
+            await hubConnection.SendAsync("SendMessage", model);
+            Message = string.Empty;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Connect();
     }
 
     public async Task AttachImage()
