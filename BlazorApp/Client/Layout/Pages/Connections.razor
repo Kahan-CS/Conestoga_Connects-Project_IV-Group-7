@@ -14,8 +14,8 @@
         <NavBar/>
     </header>
     <div class="container">
-        <FriendSection contacts="@friends" Title="Friends" Width="25vw" Height="80vh"/>
-        <FriendSection contacts="@groups" Title="Groups" Width="25vw" Height="80vh"/>
+        <FriendSection contacts="@friends" Title="Friends" Width="46vw" Height="80vh"/>
+        <ContactSection contacts="@findNew" Title="Find New" Width="46vw" Height="80vh"/>
     </div>
 </body>
 
@@ -46,7 +46,7 @@
 };
 
 
-    List<ContactModel> groups = new List<ContactModel>()
+    List<ContactModel> findNew = new List<ContactModel>()
     {
         new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
         new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
@@ -63,6 +63,7 @@
         new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
         new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
     };
+
 }
 
 <style>
@@ -72,12 +73,13 @@ body {
     font-family: 'Poppins', sans-serif;
     user-select: none;
     background-color: #556c6d;
+
 }
 .container {
     display: flex;
     align-items: flex-start;
     padding: 20px; /* Adjust padding as needed */
-    gap: 1vw; 
+    gap: 1.5vw; 
     margin-top: 50px;
     margin-left: -1vw;
 }

@@ -15,12 +15,11 @@
 
     <EditForm Model="@loginForm" OnValidSubmit="HandleLogin" class="login-form">
     <TitleComponent Title="Login" Level="3" />
-
         <TextInputComponent Label="Username" Placeholder="Username" Icon="fas fa-user" @bind-value="loginForm.Username" />
         <TextInputComponent Label="Password" Placeholder="Password" Icon="fas fa-lock" Type="password" @bind-value="loginForm.Password" />
     <LinkComponent Href="#" Text="Forgot Password?" AriaLabel="Forgot password link" class="forgot-password" />
    
-    <ButtonComponent Text="Login" Type="submit" /> 
+    <ButtonComponent Text="Login" Type="submit" Width="100%" /> 
    
     <LinkComponent Href="/signup" Text="Sign-Up" AriaLabel="Sign up link" class="sign-up" />
 
@@ -71,6 +70,10 @@
             user-select: none;
             font-weight: 500;
             line-height: 42px;
+        }
+
+        a {
+            margin-bottom: 15px;
         }
 
     label {

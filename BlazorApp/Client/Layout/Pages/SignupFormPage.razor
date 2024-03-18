@@ -8,12 +8,8 @@
 
 <EditForm Model="@signupForm" OnValidSubmit="HandleSignup">
     <TitleComponent Title="Sign-Up" Level="3" />
-
-    <TextInputComponent Label="First Name" Placeholder="First Name" @bind-value="signupForm.FirstName"/>
-    <TextInputComponent Label="Last Name" Placeholder="Last Name" @bind-value="signupForm.LastName"/>
     <TextInputComponent Label="Username" Placeholder="Username" @bind-value="signupForm.Username"/>
     <TextInputComponent Label="Password" Placeholder="Password" Type="password" @bind-value="signupForm.Password"/>
-    <TextInputComponent Label="Confirm Password" Placeholder="Confirm Password" Type="password" @bind-value="signupForm.ConfirmPassword"/>
     <TextInputComponent Label="Email" Placeholder="Email" @bind-value="signupForm.Email"/> 
 
     <div class="form-group">
@@ -21,6 +17,62 @@
     </div>
 </EditForm>
 
+<style> 
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body {
+        background-color: #556c6d;
+    }
+
+    i {
+        margin-left: 5px;
+    }
+
+    form {
+        height: 550px;
+        left: 50%;
+        border-radius: 10px;
+        width: 700px;
+        margin-top: 450px;
+        background-color: rgba(255,255,255,0.13);
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        padding: 50px 35px;
+    }
+
+        form * {
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        form h3 {
+            font-size: 32px;
+            text-align: center;
+            user-select: none;
+            font-weight: 500;
+            line-height: 42px;
+        }
+
+        a {
+            margin-bottom: 15px;
+        }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: 500;
+        user-select: none;
+    }
+</style>
 
 @code {
     SignupFormModel signupForm = new SignupFormModel();
