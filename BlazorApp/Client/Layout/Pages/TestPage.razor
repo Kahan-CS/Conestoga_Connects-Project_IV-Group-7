@@ -1,0 +1,43 @@
+﻿@page "/test"
+@inject NavigationManager NavigationManager
+
+@using BlazorApp.Shared
+@using BlazorApp.Client.Layout.PageComponents
+
+<head>
+    <title>Conestoga Connects</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+
+<FriendSection Contacts="@Contacts" Title="Friends" Width="30vw" Height="80vh" />
+
+
+@code {
+    public List<ContactModel> Contacts = new List<ContactModel>()
+{
+    new ContactModel() { Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Jane Smith", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Michael Johnson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Emily Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "William Jones", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Olivia Taylor", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "James Wilson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Sophia Martinez", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Benjamin Anderson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Isabella Thomas", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Ethan Jackson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Mia White", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Alexander Harris", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Charlotte Martin", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Noah Thompson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Amelia Garcia", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Liam Martinez", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Ava Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Lucas Wilson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
+    new ContactModel() { Name = "Emma Taylor", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" }
+};
+
+}
+

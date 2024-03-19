@@ -1,0 +1,70 @@
+﻿@using BlazorApp.Client.Layout.PageComponents
+@using BlazorApp.Shared
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
+
+<div class="contact" @onclick="HandleClick">
+    <ProfileImageComponent ImageUrl="@contactModel.ImageUrl" Size="50px"/>
+    <div class="contact-name"> <!--Div used to display the element on two different lines-->
+        <p><b>@contactModel.Name</b></p>
+        <ButtonComponent Text="Delete" backgroundColor=" #ff4d4d" hoverColor="#cc0000" Width="4vw" FontSize="14px" Height="5vh" OnClick="DeleteToggle" />
+    </div>
+</div>
+
+<style>
+    .contact {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        font-weight: 500;
+    }
+    .intro-text {
+        font-size: 0.8em;
+    }
+    .contact img {
+        margin-right: 10px;
+    }
+    p {
+        margin: 2px;
+        font-family: 'Poppins', sans-serif;
+        user-select: none;
+    }
+
+    .contact:hover {
+        background-color: #f9f9f9;
+        cursor: pointer;
+    }
+
+    .contact-name {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public ContactModel contactModel { get; set; }
+
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+    private async Task DeleteToggle()
+    {
+        Console.WriteLine("Delete Clicked");
+    }
+
+
+    private async Task HandleClick()
+    {
+        Console.WriteLine("Contact Clicked");
+    }
+}
+
+
+
+

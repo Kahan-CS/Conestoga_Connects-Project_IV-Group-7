@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<NavLink href="@Href">@Text<i class="@Icon"></i></NavLink>
+
+<style>
+    a {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 300;
+        color: #ffffff;
+        user-select: none;
+    }
+
+</style>
+
+
+
+@code {
+    [Parameter]
+    public string Href { get; set; } = "#"; //This is the URL that the link will navigate to
+
+    [Parameter]
+    public string Text { get; set; } = "Link"; //This is the text that will be displayed
+
+    [Parameter] 
+    public string Class { get; set; } = "nav-link"; //This is a class for styling
+
+    [Parameter]
+    public string AriaLabel { get; set; } = "Link"; //This is a label for text-to-speech accessibility tools
+
+    [Parameter]
+    public string Icon { get; set; } = "text"; //This is the type of icon
+}

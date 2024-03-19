@@ -1,0 +1,43 @@
+﻿@using BlazorApp.Shared;
+@using BlazorApp.Client.Layout.PageComponents;
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
+
+
+@if (Messages != null && Messages.Any())
+{
+    <div class="message-list">
+        @foreach (var message in Messages)
+        {
+            <MessageComponent model = "@message"/>
+        }
+    </div>
+}
+else
+{
+    <p>Start the conversation!</p>
+}
+
+<style>
+    .message-list {
+        width: @Width; /* Adjusted width */
+        max-height: @Height; /* Adjusted max-height */
+        overflow-y: scroll; /* Enable vertical scrolling if needed */
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public List<MessageModel> Messages { get; set; }
+
+    [Parameter]
+    public string Width { get; set; }
+
+    [Parameter]
+    public string Height { get; set; }
+}

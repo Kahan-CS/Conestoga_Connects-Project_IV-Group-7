@@ -1,0 +1,108 @@
+﻿@page "/login"
+@inject NavigationManager NavigationManager
+@using BlazorApp.Shared
+@using BlazorApp.Client.Layout.PageComponents
+
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+<TitleComponent Title="Conestoga Connects" Level="1" />
+
+
+    <EditForm Model="@loginForm" OnValidSubmit="HandleLogin" class="login-form">
+    <TitleComponent Title="Login" Level="3" />
+        <TextInputComponent Label="Username" Placeholder="Username" Icon="fas fa-user" @bind-value="loginForm.Username" />
+        <TextInputComponent Label="Password" Placeholder="Password" Icon="fas fa-lock" Type="password" @bind-value="loginForm.Password" />
+    <LinkComponent Href="#" Text="Forgot Password?" AriaLabel="Forgot password link" class="forgot-password" />
+   
+    <ButtonComponent Text="Login" Type="submit" Width="100%" /> 
+   
+    <LinkComponent Href="/signup" Text="Sign-Up" AriaLabel="Sign up link" class="sign-up" />
+
+</EditForm>
+
+</body>
+
+<style>
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #556c6d;
+    }
+
+    i {
+        margin-left: 5px;
+    }
+
+    form {
+        height: 520px;
+        left: 50%;
+        border-radius: 10px;
+        width: 500px;
+        margin-top: 450px;
+        background-color: rgba(255,255,255,0.13);
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        padding: 50px 35px;
+    }
+
+        form * {
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        form h3 {
+            font-size: 32px;
+            text-align: center;
+            user-select: none;
+            font-weight: 500;
+            line-height: 42px;
+        }
+
+        a {
+            margin-bottom: 15px;
+        }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: 500;
+        user-select: none;
+    }
+
+</style>
+ 
+
+@code {
+    private LoginFormModel loginForm = new LoginFormModel();
+
+    private void HandleLogin()
+    {
+        NavigationManager.NavigateTo("/home"); // Redirect to home page -- not implemented yet
+    }
+
+    // TODO: add implementation
+    private void HandleForgotPassword()
+    {
+
+    }
+
+    private void HandleSignUp()
+    {
+        
+    }
+}

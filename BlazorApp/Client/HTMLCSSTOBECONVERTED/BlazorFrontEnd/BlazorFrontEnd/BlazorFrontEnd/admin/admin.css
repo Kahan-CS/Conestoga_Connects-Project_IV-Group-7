@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins',sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #556c6d;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    font-weight: 500;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    display: inline-block;
+    color: white;
+    width: 15%;
+    text-align: center;
+    margin-left: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.07);
+}
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.13);
+}
+
+header {
+    width: 100%;
+    height: 8vh;
+    background-color: #556c6d;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 87vh;
+    margin-top: 20px;
+}
+#admin-title {
+    position: absolute;
+    top: 10px; 
+    left: 45px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+font-size: 30px;
+}
+
+.admin-settings {
+    width: 30%;
+    background-color: #556c6d; 
+    margin: 0 10px;
+    padding: 20px; 
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    overflow-y: auto;
+    font-family: 'Poppins', sans-serif; 
+    position: relative; 
+}
+
+.admin-settings h3 {
+    color: white;
+    font-size: 1.5em; 
+    position: absolute;
+    top: 20px; 
+    left: 20px; 
+}
+
+
+.admin-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-links li {
+    margin-bottom: 10px;
+}
+
+.admin-links a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.07); 
+}
+
+.admin-links a:hover {
+    background-color: rgba(255,255,255,0.13); 
+}
+
+.available-accounts {
+    width: 30%;
+    background-color: #556c6d; 
+    margin: 0 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.available-accounts h3 {
+    color: #fff; 
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.account-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.account-list .account-item span,
+.group-list .group-item span {
+    color: #333; 
+    font-size: 1em; 
+    font-weight: bold;
+}
+
+.account-list .account-item span:hover,
+.group-list .group-item span:hover {
+    text-decoration: underline;
+}
+
+.account-list .account-item:hover,
+.group-list .group-item:hover {
+    background-color: #dadada; 
+}
+
+.account-list .account-item:hover .delete-button,
+.group-list .group-item:hover .delete-button {
+    background-color: #ff4d4d; 
+}
+
+.account-list .account-item:hover .delete-button:hover,
+.group-list .group-item:hover .delete-button:hover {
+    background-color: #cc0000; 
+}
+
+
+.delete-button {
+    width: 80px; 
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: #ff4d4d; 
+    color: white;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    display: inline-block; 
+    line-height: 30px; 
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}
+
+
+.available-groups {
+    width: 30%;
+    background-color: #556c6d; 
+    margin: 0 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.available-groups h3 {
+    color: #fff; 
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.group-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.account-list .account-item span,
+.group-list .group-item span {
+    color: #333; 
+    font-size: 1em; 
+}
+
+.account-list .account-item span:hover,
+.group-list .group-item span:hover {
+    text-decoration: underline; 
+}
+
+.account-list .account-item:hover,
+.group-list .group-item:hover {
+    background-color: #dadada; 
+}
+
+.account-list .account-item:hover .delete-button,
+.group-list .group-item:hover .delete-button {
+    background-color: #ff4d4d; 
+}
+
+.account-list .account-item:hover .delete-button:hover,
+.group-list .group-item:hover .delete-button:hover {
+    background-color: #cc0000; 
+}

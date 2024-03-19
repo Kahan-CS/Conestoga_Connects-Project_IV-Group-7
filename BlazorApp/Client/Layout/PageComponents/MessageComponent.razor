@@ -1,0 +1,97 @@
+﻿@using BlazorApp.Client.Layout.PageComponents
+@using BlazorApp.Shared
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
+
+
+@code {
+    [Parameter]
+    public MessageModel model { get; set; }
+
+}
+
+<div class="message @(model.IsSent ? "message-sent" : "message-received")">
+    <div class="sender-info">
+        <ProfileImageComponent ImageUrl="@model.SenderProfileImageUrl" Size="30px" />
+        <div class="sender-name">
+            <strong>@model.SenderName</strong>
+        </div>
+    </div>
+    <div class="message-text">
+        @if (!string.IsNullOrWhiteSpace(model.ImageUrl))
+        {
+                <img src="@model.ImageUrl" alt="Message Image" />
+        }
+        <p>@model.Content</p>
+    </div>
+    <div class="message-time">
+        <p>@model.Time.ToString("h:mm tt")</p>
+    </div>
+</div>
+
+<style>
+    .message {
+        margin: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: 'Poppins', sans-serif;
+        padding-top: 10px;
+        padding-bottom: 0px;
+        max-width: 80%;
+        max-height: fit-content;
+        width: fit-content;
+        word-wrap: break-word; 
+        word-break: break-word; 
+        border-radius: 8px;
+        background-color: #f1f1f1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .message-sent {
+        align-self: flex-end;
+        background-color: #d1ecf1;
+    }
+
+    .message-received {
+        align-self: flex-start;
+        background-color: #d3d3d3;
+    }
+
+    .sender-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .sender-name {
+        margin-left: 10px;
+    }
+
+.message-text p {
+        margin-bottom: 2px;
+    }
+
+    .message-text img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    .message-time {
+        align-self: flex-end;
+        font-size: 0.8em;
+        color: #666; 
+    }
+    .message-time p {
+        margin-bottom: 8px;
+    }
+</style>
+
+
+
+
+
+
