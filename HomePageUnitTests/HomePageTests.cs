@@ -2,16 +2,13 @@ using Bunit;
 using BlazorApp.Client.Layout.PageComponents;
 using BlazorApp.Client.Layout.Pages;
 using BlazorApp.Shared;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Components;
-using Xunit;
-using Microsoft.AspNetCore.Components.Web;
+
 
 // cut is short for Component Under Test 
 
-namespace HomePageUnitTests
+namespace UnitTests
 {
-    public class UnitTest1 : TestContext
+    public class HomePageTests : TestContext
     {
 
 
@@ -161,7 +158,7 @@ namespace HomePageUnitTests
         }
 
 
-        // Checks if the MessgeSection Component renders with the correct width and height specified
+        // Checks if the MessageSection Component renders with the correct width and height specified
         [Fact]
         public void MessageSectionDisplaysCorrectWidthAndHeight()
         {
@@ -184,3 +181,4 @@ namespace HomePageUnitTests
 
 }
 
+    
