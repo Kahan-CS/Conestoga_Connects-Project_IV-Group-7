@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Components.Forms
 @using System.IO
 @using BlazorApp.Shared
+@using System.Threading
 @using Microsoft.AspNetCore.SignalR.Client;
 @inject IJSRuntime JSRuntime
 @inject NavigationManager NavigationManager
@@ -99,20 +100,24 @@
     }
     public string Message { get; set; }
     private IBrowserFile SelectedImage { get; set; }
-
+    int count = 0;
 
     public async Task SendMessage() 
     {
+        count++;
         if (hubConnection != null)
         {
-            MessageModel model = new MessageModel()
+            MessageModel model;
+            if(count%2 == 0)
             {
-                Content = Message,
-                IsSent = true,
-                Time = DateTime.Now,
-                SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"
-            };
-            await hubConnection.SendAsync("SendMessage", model);
+                model = new MessageModel() { SenderName = "John Doe", Content = Message, IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png" };
+            }
+            else
+            {
+                model = new MessageModel() { SenderName = "Jane Doe", Content = Message, IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png" };
+            }
+
+            await hubConnection.SendAsync("SendMessage", model); 
             Message = string.Empty;
         }
     }
