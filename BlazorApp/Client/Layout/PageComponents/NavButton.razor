@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 </head>
 
-<button class="button-link" @onclick="Navigate">
+<button class="button-link" id="@Id" @onclick="Navigate">
     <i class="@Icon"></i>
     @Text
 </button>
@@ -20,6 +20,9 @@
 
     [Parameter]
     public string Href { get; set; }
+
+    [Parameter]
+    public string Id { get; set; }
 
     [Parameter]
     public EventCallback<MouseEventArgs> OnClick { get; set; }

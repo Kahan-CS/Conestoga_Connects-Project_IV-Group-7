@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components
 
-<NavLink href="@Href">@Text<i class="@Icon"></i></NavLink>
+<NavLink href="@Href" id="@Id">@Text<i class="@Icon"> </i></NavLink>
 
 <style>
     a {
@@ -26,6 +26,9 @@
 
     [Parameter] 
     public string Class { get; set; } = "nav-link"; //This is a class for styling
+
+    [Parameter]
+    public string Id { get; set; }
 
     [Parameter]
     public string AriaLabel { get; set; } = "Link"; //This is a label for text-to-speech accessibility tools
