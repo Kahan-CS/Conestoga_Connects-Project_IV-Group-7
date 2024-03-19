@@ -38,6 +38,36 @@ namespace BlazorApp.Server.Services
         {
             _userCollection.DeleteOne(user => user.Id == id);
         }
+        public async Task<ApplicationUser> GetUserByUsernameAsync(string username)
+        {
+            try
+            {
+                return await _userCollection
+                    .Find(user => user.UserName == username)
+                    .FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception
+                throw;
+            }
+        }
+        public async Task<ApplicationUser> GetUserByUsernameAndPasswordAsync(string username, string password)
+        {
+            try
+            {
+                var user = await _userCollection
+                    .Find(u => u.UserName == username && u.Password == password)
+                    .FirstOrDefaultAsync();
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception
+                throw;
+            }
+        }
     }
 }
 

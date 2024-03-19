@@ -38,5 +38,34 @@ namespace BlazorApp.Server.Services
         {
             _individualChatCollection.DeleteOne(chat => chat.Id == id);
         }
+        public async Task<IndividualChat> GetIndividualChatByUserIdAsync(string userId)
+        {
+            try
+            {
+                return await _individualChatCollection
+                    .Find(chat => chat.User1Id == userId || chat.User2Id == userId)
+                    .FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception
+                throw;
+            }
+        }
+
+        public async Task<List<IndividualChat>> GetIndividualChatsByUserIdAsync(string userId)
+        {
+            try
+            {
+                return await _individualChatCollection
+                    .Find(chat => chat.User1Id == userId || chat.User2Id == userId)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception
+                throw;
+            }
+        }
     }
 }
