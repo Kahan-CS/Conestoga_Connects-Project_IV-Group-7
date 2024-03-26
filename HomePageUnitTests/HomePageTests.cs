@@ -2,7 +2,7 @@ using Bunit;
 using BlazorApp.Client.Layout.PageComponents;
 using BlazorApp.Client.Layout.Pages;
 using BlazorApp.Shared;
-
+using BlazorApp.
 
 // cut is short for Component Under Test 
 
@@ -10,8 +10,6 @@ namespace UnitTests
 {
     public class HomePageTests : TestContext
     {
-
-
         [Fact]
 
         // This test verifies that the HomePage component renders correctly
