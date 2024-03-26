@@ -1,0 +1,108 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@using System.IO
+@inject IJSRuntime JSRuntime
+
+<head>
+    <title>Conestoga Connects</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<div class="message-send-area">
+    <input class="message-input" type="text" placeholder="Type a message" @bind="@Message">
+    <InputFile class="hidden-input" OnChange="@HandleFileSelection" accept="image/*"/> <!-- Hidden input for file attachment -->
+    <button class="attach-image-button" @onclick="AttachImage">
+        <i class="fas fa-image"></i>
+    </button>
+    <button class="send-message-button" @onclick="SendMessage">
+        <i class="fas fa-paper-plane"></i>
+    </button>
+</div>
+<style>
+.message-send-area {
+    margin-top: auto;
+    position: sticky;
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: default; /* Set cursor to default */
+    user-select: none; /* Disable text selection */
+}
+
+.message-input {
+    font-family: "Poppins", sans-serif;
+    width: calc(100% - 160px); /* Adjusted width for image attachment button */
+    height: 6vh;
+    padding: 5px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    flex-grow: 1; /* Allow the input to grow to fill available space */
+    user-select: text; /* Enable text selection within the input */
+}
+
+.send-message-button {
+    font-family: "Poppins", sans-serif;
+    width: 100px;
+    height: 5vh;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    border: 1px solid #616161;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    cursor: default; /* Set cursor to default */
+    user-select: none; /* Disable text selection */
+}
+
+.attach-image-button {
+    font-family: "Poppins", sans-serif;
+    width: 50px;
+    height: 5vh;
+    font-weight: 500;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    border: 1px solid #616161;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    cursor: pointer; /* Set cursor to pointer */
+    user-select: none; /* Disable text selection */
+}
+
+.hidden-input {
+    display: none;
+}     
+</style>
+
+@code {
+    public string Message { get; set; }
+    private IBrowserFile SelectedImage { get; set; }
+
+    public void SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(Message))
+            return;
+        //TODO: Send message
+    }
+
+    public async Task AttachImage()
+    {
+        // Trigger file dialog programmatically using JSInterop
+        await JSRuntime.InvokeVoidAsync("triggerFileDialog");
+    }
+
+    public void HandleFileSelection(InputFileChangeEventArgs e)
+    {
+        SelectedImage = e.File;
+    }
+}
+

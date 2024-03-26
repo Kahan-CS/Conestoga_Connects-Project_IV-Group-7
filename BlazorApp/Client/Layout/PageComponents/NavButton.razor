@@ -1,0 +1,51 @@
+﻿
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
+
+<button class="button-link" @onclick="OnClick">
+    <i class="@Icon"></i>
+    @Text
+</button>
+
+@code {
+    [Parameter]
+    public string Icon { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public string Href { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+}
+
+<style>
+    .button-link {
+    background-color: rgba(255, 255, 255, 0.07);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    padding: 14px 16px;
+    text-align: left;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 10vw;
+}
+
+.button-link i {
+    margin-right: 10px;
+}
+
+.button-link:hover {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+</style>

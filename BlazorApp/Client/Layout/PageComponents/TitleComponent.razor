@@ -1,4 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Components
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
 
 @if (!string.IsNullOrWhiteSpace(Title))
 {
@@ -28,6 +32,55 @@
     }
 } <!-- 1. If the Title is not empty, then display the title with the level specified. If the level is not specified, then default to h1. -->
 
+<style>
+    h1 {
+        color: "@color"; /* 2. Set the color of the title to the color specified. If the color is not specified, then default to white. */
+        user-select: none;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-family: 'Poppins',sans-serif;
+    }
+
+h2 {
+        color: "@color";
+        user-select: none;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-family: 'Poppins',sans-serif;
+    }
+    
+h3 {
+        color: "@color";
+        user-select: none;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-family: 'Poppins',sans-serif;
+    }
+
+h4 {
+        color: "@color";
+        user-select: none;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-family: 'Poppins',sans-serif;
+    }
+
+h5 {
+        color: "@color";
+        user-select: none;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-family: 'Poppins',sans-serif;
+    }
+
+h6 {
+        color: "@color";
+        user-select: none;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-family: 'Poppins',sans-serif;
+    }
+</style>
 
 @code {
     [Parameter]
@@ -41,5 +94,9 @@
         get => _level;
         set => _level = (value < 1 || value > 6) ? 1 : value; //Ensure the heading level is between 1 and 6
     }
+
+    [Parameter]
+    public string color { get; set; } = "#ffffff";
+
 }
 

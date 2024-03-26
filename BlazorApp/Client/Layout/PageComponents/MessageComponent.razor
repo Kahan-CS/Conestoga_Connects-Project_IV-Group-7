@@ -1,46 +1,95 @@
-﻿@using BlazorApp.Client.Layout.PageComponents;
+﻿@using BlazorApp.Client.Layout.PageComponents
+@using BlazorApp.Shared
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
+
+
 @code {
     [Parameter]
-    public string Content { get; set; }
+    public MessageModel model { get; set; }
 
-    [Parameter]
-    public DateTime Time { get; set; }
-
-    [Parameter]
-    public bool IsSent { get; set; } // True for sent, false for received
-
-    [Parameter]
-    public string SenderName { get; set; } // Add this for the sender's name
-
-    [Parameter]
-    public string SenderProfileImageUrl { get; set; } // Add this for the sender's profile image URL
-
-    // Optional image within the message
-    [Parameter]
-    public string ImageUrl { get; set; }
 }
 
-<div class="message @(IsSent ? "message-sent" : "message-received")">
-    @if (!IsSent)
-    {
-        <div style="display: flex; align-items: center;">
-            <ProfileImageComponent ImageUrl="@SenderProfileImageUrl" Size="30" />
-            <div style="margin-left: 10px;">
-                <strong>@SenderName</strong>
-            </div>
+<div class="message @(model.IsSent ? "message-sent" : "message-received")">
+    <div class="sender-info">
+        <ProfileImageComponent ImageUrl="@model.SenderProfileImageUrl" Size="30px" />
+        <div class="sender-name">
+            <strong>@model.SenderName</strong>
         </div>
-    }
+    </div>
     <div class="message-text">
-        @if (!string.IsNullOrWhiteSpace(ImageUrl))
+        @if (!string.IsNullOrWhiteSpace(model.ImageUrl))
         {
-            <img src="@ImageUrl" alt="Message Image" style="max-width: 100%; border-radius: 8px;">
+                <img src="@model.ImageUrl" alt="Message Image" />
         }
-        <p>@Content</p>
+        <p>@model.Content</p>
     </div>
     <div class="message-time">
-        <p>@Time.ToString("t")</p>
+        <p>@model.Time.ToString("h:mm tt")</p>
     </div>
 </div>
+
+<style>
+    .message {
+        margin: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: 'Poppins', sans-serif;
+        padding-top: 10px;
+        padding-bottom: 0px;
+        max-width: 80%;
+        max-height: fit-content;
+        width: fit-content;
+        word-wrap: break-word; 
+        word-break: break-word; 
+        border-radius: 8px;
+        background-color: #f1f1f1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .message-sent {
+        align-self: flex-end;
+        background-color: #d1ecf1;
+    }
+
+    .message-received {
+        align-self: flex-start;
+        background-color: #d3d3d3;
+    }
+
+    .sender-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .sender-name {
+        margin-left: 10px;
+    }
+
+.message-text p {
+        margin-bottom: 2px;
+    }
+
+    .message-text img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    .message-time {
+        align-self: flex-end;
+        font-size: 0.8em;
+        color: #666; 
+    }
+    .message-time p {
+        margin-bottom: 8px;
+    }
+</style>
+
 
 
 

@@ -10,7 +10,7 @@
     <ProfileImageComponent ImageUrl="@contactModel.ImageUrl" Size="50px"/>
     <div class="contact-name"> <!--Div used to display the element on two different lines-->
         <p><b>@contactModel.Name</b></p>
-        <p class="intro-text">@contactModel.IntroText</p>
+        <ButtonComponent Text="Delete" backgroundColor=" #ff4d4d" hoverColor="#cc0000" Width="4vw" FontSize="14px" Height="5vh" OnClick="DeleteToggle" />
     </div>
 </div>
 
@@ -38,6 +38,12 @@
         background-color: #f9f9f9;
         cursor: pointer;
     }
+
+    .contact-name {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
 </style>
 
 @code {
@@ -47,13 +53,18 @@
     [Parameter]
     public EventCallback OnClick { get; set; }
 
+    private async Task DeleteToggle()
+    {
+        Console.WriteLine("Delete Clicked");
+    }
+
 
     private async Task HandleClick()
     {
         Console.WriteLine("Contact Clicked");
-        await OnClick.InvokeAsync();
     }
 }
+
 
 
 

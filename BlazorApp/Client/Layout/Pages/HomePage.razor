@@ -1,0 +1,132 @@
+﻿@page "/home"
+@inject NavigationManager NavigationManager
+@using BlazorApp.Shared
+@using BlazorApp.Client.Layout.PageComponents
+
+<head>
+    <title>Conestoga Connects</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+
+<body>
+
+<header>
+    <NavBar/>
+</header>
+
+
+<div class="container">
+    <ContactSection contacts="@Contacts" Title="Messages" Width="30vw" Height="81vh"/>
+    <MessageSection messages="@MessageList" Width="63.5vw" Height="81vh"/>
+</div>
+
+
+
+
+</body>
+    
+
+@code {
+    public List<ContactModel> Contacts = new List<ContactModel>()
+{
+    new ContactModel() { Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Doe" },
+    new ContactModel() { Name = "Jane Smith", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hi there, I'm Jane Smith" },
+    new ContactModel() { Name = "Michael Johnson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Nice to meet you, I'm Michael Johnson" },
+    new ContactModel() { Name = "Emily Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello everyone, I'm Emily Brown" },
+    new ContactModel() { Name = "William Jones", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Greetings, I'm William Jones" },
+    new ContactModel() { Name = "Olivia Taylor", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Nice to be here, I'm Olivia Taylor" },
+    new ContactModel() { Name = "James Wilson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello world, I'm James Wilson" },
+    new ContactModel() { Name = "Sophia Martinez", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Good day, I'm Sophia Martinez" },
+    new ContactModel() { Name = "Benjamin Anderson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Greetings, I'm Benjamin Anderson" },
+    new ContactModel() { Name = "Isabella Thomas", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello everyone, I'm Isabella Thomas" },
+    new ContactModel() { Name = "Ethan Jackson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Nice to meet you, I'm Ethan Jackson" },
+    new ContactModel() { Name = "Mia White", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hi there, I'm Mia White" },
+    new ContactModel() { Name = "Alexander Harris", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Greetings, I'm Alexander Harris" },
+    new ContactModel() { Name = "Charlotte Martin", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I'm Charlotte Martin" },
+    new ContactModel() { Name = "Noah Thompson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello world, I'm Noah Thompson" },
+    new ContactModel() { Name = "Amelia Garcia", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hi there, I'm Amelia Garcia" },
+    new ContactModel() { Name = "Liam Martinez", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Nice to be here, I'm Liam Martinez" },
+    new ContactModel() { Name = "Ava Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I'm Ava Brown" },
+    new ContactModel() { Name = "Lucas Wilson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Greetings, I'm Lucas Wilson" },
+    new ContactModel() { Name = "Emma Taylor", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Good day, I'm Emma Taylor" }
+};
+
+    public List<MessageModel> MessageList = new List<MessageModel>()
+    {
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+         new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "John Doe", Content = "Hello, I am John Doe", IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+        new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
+
+    };
+
+    void SendMessage()
+    {
+        // Implement sending a message logic here
+    }
+
+
+
+}
+
+<style>
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins',sans-serif;
+    background-color: #556c6d;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 80px; /* Adjust the height as needed */
+    background-color: #556c6d;
+    color: white;
+    display: flex;
+    align-items: center; /* Align items vertically to the center */
+    justify-content: left;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px; /* Adjust padding as needed */
+    gap: 1vw; 
+    margin-top: 50px;
+    margin-left: -1vw;
+}
+
+/* Adjust the styles for ContactSection and MessageSection if needed */
+
+
+</style>
+

@@ -1,0 +1,42 @@
+﻿@using BlazorApp.Shared
+@using BlazorApp.Client.Layout.PageComponents
+
+<head>
+    <title>Conestoga Connects</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<!-- Navigation bar -->
+    <nav id="Navigation">
+        <TitleComponent Title="Conestoga Connects" Level="1"/>
+        <div class = "Nav-Btns">
+            <NavButton Text="Home" Icon="fas fa-home" Href="/home"/>
+            <NavButton Text="Connections" Icon="fas fa-users" Href="/friends"/>
+            <NavButton Text="Logout" Icon="fas fa-sign-out-alt" Href="/logout"/>
+        </div>
+    </nav>
+
+<style>
+
+#Navigation {
+    margin-left:10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 98%;
+    padding: 0 20px; /* Add padding to the sides */
+}
+
+
+.Nav-Btns {
+    display: flex;
+    justify-content: space-between;
+    width: 35%;
+}
+
+button {
+    margin-left: 15px;
+}
+</style>

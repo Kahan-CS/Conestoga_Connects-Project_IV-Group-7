@@ -1,6 +1,32 @@
 ﻿@using Microsoft.AspNetCore.Components
 
-<button class="button-style" @onclick="OnClick" type="@Type">@Text</button>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
+
+<button class="button-style" type="@Type">@Text</button>
+
+ <style>
+    .button-style {
+        font-family: 'Poppins', sans-serif; 
+        display: inline-block; /* or 'block' depending on your layout */
+        background-color: @backgroundColor; 
+        width: @Width;
+        height: @Height;
+        color: @textColor;
+        padding: 10px;
+        font-size: @FontSize;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center; /* Center the text */
+    }
+
+    button:hover {
+        background-color: @hoverColor;
+    }
+</style> 
 
 @code {
     [Parameter]
@@ -11,4 +37,26 @@
 
     [Parameter]
     public string Type { get; set; } = "button"; //This is the type of button, e.g. submit, reset, button
+
+    [Parameter] 
+    public string backgroundColor { get; set; } = "#ffffff"; //Default to white
+
+    [Parameter]
+    public string textColor { get; set; } = "#000000"; //Default to black
+
+    [Parameter]
+    public string Width { get; set; } = "100px"; //Default to 100px
+
+    [Parameter]
+    public string Height { get; set; } = "50px"; //Default to 50px
+
+    [Parameter]
+    public string FontSize { get; set; } = "18px"; //Default to 18px
+
+    [Parameter]
+    public string hoverColor { get; set; } = "#ffffff"; //Default to white
+
+    [Parameter]
+    public string BorderRadius { get; set; } = "5px"; //Default to 5px
+
 }
