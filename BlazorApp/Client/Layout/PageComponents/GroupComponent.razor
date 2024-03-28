@@ -1,23 +1,36 @@
 ﻿@using Microsoft.AspNetCore.Components
+@using BlazorApp.Client.Layout.PageComponents
 
 <div class="group-item">
     <span>@Name</span>
     <div class="button-container">
-        <div class="delete-button">Delete</div>
-        <div class="edit-button">Edit</div>
-        <div class="view-button">View</div>
+        <ButtonComponent Text="Delete" BackgroundColor="#ff4d4d" TextColor="#ffffff" HoverColor="#cc0000" OnClick="@DeleteClicked" />
+        <ButtonComponent Text="Edit" BackgroundColor="#25d422" TextColor="#ffffff" HoverColor="#1a9e17" OnClick="@EditClicked" />
+        <ButtonComponent Text="View" BackgroundColor="#38bff0" TextColor="#ffffff" HoverColor="#2887a9" OnClick="@ViewClicked" />
     </div>
 </div>
-
 
 @code {
     [Parameter]
     public string Name { get; set; }
+
+    private void DeleteClicked()
+    {
+        // Implement delete logic
+    }
+
+    private void EditClicked()
+    {
+        // Implement edit logic
+    }
+
+    private void ViewClicked()
+    {
+        // Implement view logic
+    }
 }
 
-
 <style>
-
     .group-item {
         display: flex;
         align-items: center;
@@ -37,55 +50,4 @@
         display: flex;
         gap: 10px;
     }
-
-    .delete-button {
-        width: 45px;
-        text-align: center;
-        font-size: 0.55em;
-        padding: 5px 10px;
-        border-radius: 3px;
-        background-color: #ff4d4d;
-        color: white;
-        cursor: pointer;
-        font-family: 'Poppins', sans-serif;
-        line-height: 25px;
-    }
-
-        .delete-button:hover {
-            background-color: #cc0000;
-        }
-
-    .edit-button {
-        width: 45px;
-        text-align: center;
-        font-size: 0.55em;
-        padding: 5px 10px;
-        border-radius: 3px;
-        background-color: #25d422;
-        color: white;
-        cursor: pointer;
-        font-family: 'Poppins', sans-serif;
-        line-height: 25px;
-    }
-
-        .edit-button:hover {
-            background-color: #1a9e17;
-        }
-
-    .view-button {
-        width: 45px;
-        text-align: center;
-        font-size: 0.55em;
-        padding: 5px 10px;
-        border-radius: 3px;
-        background-color: #38bff0;
-        color: white;
-        cursor: pointer;
-        font-family: 'Poppins', sans-serif;
-        line-height: 25px;
-    }
-
-        .view-button:hover {
-            background-color: #2887a9;
-        }
 </style>

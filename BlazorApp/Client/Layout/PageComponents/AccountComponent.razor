@@ -4,93 +4,28 @@
 <div class="account-item">
     <span>@Name</span>
     <div class="button-container">
-        <div class="delete-button">Delete</div>
-        <div class="edit-button">Edit</div>
-        <div class="view-button">View</div>
+        <ButtonComponent Text="Delete" backgroundColor="#ff4d4d" textColor="#ffffff" OnClick="@DeleteClicked" />
+        <ButtonComponent Text="Edit" backgroundColor="#25d422" textColor="#ffffff" OnClick="@EditClicked" />
+        <ButtonComponent Text="View" backgroundColor="#38bff0" textColor="#ffffff" OnClick="@ViewClicked" />
     </div>
 </div>
 
 @code {
     [Parameter]
     public string Name { get; set; }
+
+    private void DeleteClicked()
+    {
+        // Implement delete functionality here
+    }
+
+    private void EditClicked()
+    {
+        // Implement edit functionality here
+    }
+
+    private void ViewClicked()
+    {
+        // Implement view functionality here
+    }
 }
-
-<style>
-    .account-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-bottom: 1px solid #ccc;
-    }
-
-        .account-item span {
-            flex: 1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-    .account-list .account-item span,
-    .group-list .group-item span {
-        color: #333;
-        font-size: 1em;
-        font-weight: bold;
-    }
-
-    .button-container {
-        display: flex;
-        gap: 10px;
-    }
-
-    .delete-button {
-        width: 45px;
-        text-align: center;
-        font-size: 0.55em;
-        padding: 5px 10px;
-        border-radius: 3px;
-        background-color: #ff4d4d;
-        color: white;
-        cursor: pointer;
-        font-family: 'Poppins', sans-serif;
-        line-height: 25px;
-    }
-
-        .delete-button:hover {
-            background-color: #cc0000;
-        }
-
-    .edit-button {
-        width: 45px;
-        text-align: center;
-        font-size: 0.55em;
-        padding: 5px 10px;
-        border-radius: 3px;
-        background-color: #25d422;
-        color: white;
-        cursor: pointer;
-        font-family: 'Poppins', sans-serif;
-        line-height: 25px;
-    }
-
-        .edit-button:hover {
-            background-color: #1a9e17;
-        }
-
-    .view-button {
-        width: 45px;
-        text-align: center;
-        font-size: 0.55em;
-        padding: 5px 10px;
-        border-radius: 3px;
-        background-color: #38bff0;
-        color: white;
-        cursor: pointer;
-        font-family: 'Poppins', sans-serif;
-        line-height: 25px;
-    }
-
-        .view-button:hover {
-            background-color: #2887a9;
-        }
-</style>
