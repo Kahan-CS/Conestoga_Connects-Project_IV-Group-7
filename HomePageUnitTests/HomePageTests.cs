@@ -2,13 +2,12 @@ using Bunit;
 using BlazorApp.Client.Layout.PageComponents;
 using BlazorApp.Client.Layout.Pages;
 using BlazorApp.Shared;
-using BlazorApp.
+
 
 // cut is short for Component Under Test 
-
 namespace UnitTests
 {
-    public class HomePageTests : TestContext
+    public class HomePageTests : TestContext 
     {
         [Fact]
 
@@ -26,7 +25,7 @@ namespace UnitTests
             Assert.NotNull(cut);
 
         }
-
+                    
         // This test ensures that the contacts are rendered correctly within the ContactSection.
         [Fact]
         public void ContactsRenderCorrectly()

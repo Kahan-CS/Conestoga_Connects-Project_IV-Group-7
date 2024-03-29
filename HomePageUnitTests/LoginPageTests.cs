@@ -11,7 +11,7 @@ namespace UnitTests
         [Fact]
 
         // This test verifies that the HomePage component renders correctly
-        public void LOginPageRendersCorrectly()
+        public void LoginPageRendersCorrectly()
         {
             // Arrange
             using var ctx = new TestContext();
@@ -19,11 +19,25 @@ namespace UnitTests
             // Act
             var cut = ctx.RenderComponent<LoginFormPage>();
 
-            // Assert
             // Assert component renders correctly
             Assert.NotNull(cut);
 
         }
+        // verifies that the correct title is displayed
+        [Fact]
+        public void HeaderDisplaysCorrectTitle()
+        {
+            // Arrange
+            using var ctx = new TestContext();
+            var cut = ctx.RenderComponent<HomePage>();
 
-    }
+            // Act
+            var header = cut.Find("title");
+
+
+            // Assert header displays correct title
+            Assert.Contains("Conestoga Connects", header.InnerHtml);
+        }
+
+    } 
 }
