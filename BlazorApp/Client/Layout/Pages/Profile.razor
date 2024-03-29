@@ -1,5 +1,71 @@
-﻿<h3>Profile</h3>
+﻿@page "/profile"
+@inject NavigationManager NavigationManager
+@using BlazorApp.Shared
+@using BlazorApp.Client.Layout.PageComponents
+
+
+<head>
+    <title>Conestoga Connects</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <NavBar/>
+    </header>
+
+<div class="container">
+
+</div>
+
+
+</body>
+
+
+<style>
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins',sans-serif;
+    background-color: #556c6d;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 80px; /* Adjust the height as needed */
+    background-color: #556c6d;
+    color: white;
+    display: flex;
+    align-items: center; /* Align items vertically to the center */
+    justify-content: left;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px; /* Adjust padding as needed */
+    gap: 1vw; 
+    margin-top: 50px;
+    margin-left: -1vw;
+}
+
+</style>
 
 @code {
+
+
 
 }

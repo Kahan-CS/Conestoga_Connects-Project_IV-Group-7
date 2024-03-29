@@ -1,6 +1,4 @@
-﻿@using BlazorApp.Shared
-@using BlazorApp.Client.Layout.PageComponents
-
+﻿
 <head>
     <title>Conestoga Connects</title>
     <link rel="stylesheet" href="home.css">
@@ -12,8 +10,8 @@
         <TitleComponent Title="Conestoga Connects" Level="1"/>
         <div class = "Nav-Btns">
             <NavButton Text="Home" Icon="fas fa-home" Href="/home"/>
-            <NavButton Text="Connections" Icon="fas fa-users" Href="/friends"/>
-            <NavButton Text="Logout" Icon="fas fa-sign-out-alt" Href="/logout"/>
+            <NavButton Text="Connections" Id="connections" Icon="fas fa-users" Href="/connections"/>
+            <NavButton Text="Logout" Id="logout" Icon="fas fa-sign-out-alt" Href="/login" />
         </div>
     </nav>
 
@@ -40,3 +38,7 @@ button {
     margin-left: 15px;
 }
 </style>
+
+@code{
+
+}
