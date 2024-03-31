@@ -24,6 +24,13 @@ builder.Services.AddScoped(sp =>
     return client.GetDatabase(mongoSettings.DatabaseName);
 });
 
+builder.Services.AddSignalR();
+builder.Services.AddResponseCompression(options =>
+{
+    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+               new[] { "application/octet-stream" });
+});
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -46,11 +53,13 @@ app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
+app.UseResponseCompression();
 
 app.UseRouting();
 
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+app.MapHub<ChatHub>("/chathub");
 
 app.Run();

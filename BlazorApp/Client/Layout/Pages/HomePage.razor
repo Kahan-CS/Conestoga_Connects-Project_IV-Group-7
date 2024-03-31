@@ -1,6 +1,7 @@
 ﻿@page "/home"
 @inject NavigationManager NavigationManager
 @using BlazorApp.Shared
+@using Microsoft.AspNetCore.SignalR.Client;
 @using BlazorApp.Client.Layout.PageComponents
 
 <head>
@@ -29,6 +30,26 @@
     
 
 @code {
+    public HubConnection? hubConnection;
+    private async Task Connect()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+            .Build();
+
+        hubConnection.On<MessageModel>("ReceiveMessage", (message) =>
+        {
+            MessageList.Add(message); 
+            StateHasChanged();
+        });
+
+        await hubConnection.StartAsync();
+
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await Connect();
+    }
     public List<ContactModel> Contacts = new List<ContactModel>()
 {
     new ContactModel() { Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png", IntroText = "Hello, I am John Doe" },
