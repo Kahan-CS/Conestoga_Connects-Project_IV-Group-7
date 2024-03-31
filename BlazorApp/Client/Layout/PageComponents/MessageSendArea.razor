@@ -9,7 +9,8 @@
 </head>
 
 <div class="message-send-area">
-    <input class="message-input" type="text" placeholder="Type a message" @bind="@Message">
+	<input class="message-input" type="text" placeholder="Type a message" @bind="@Message" @onkeydown="@Enter">
+
     <InputFile class="hidden-input" OnChange="@HandleFileSelection" accept="image/*"/> <!-- Hidden input for file attachment -->
     <button class="attach-image-button" @onclick="AttachImage">
         <i class="fas fa-image"></i>
@@ -82,16 +83,55 @@
     display: none;
 }     
 </style>
-
+	
 @code {
-    public string Message { get; set; }
-    private IBrowserFile SelectedImage { get; set; }
+	public HubConnection? hubConnection;
+	private async Task Connect()
+	{
+		hubConnection = new HubConnectionBuilder()
+			.WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+			.Build();
 
-    public void SendMessage()
+		await hubConnection.StartAsync();
+
+	}
+	public string Message { get; set; }
+	private IBrowserFile SelectedImage { get; set; }
+	int count = 0;
+
+	// public async Task Enter(KeyboardEventArgs e)
+	// {
+	// 	if (e.Code == "Enter" || e.Code == "NumpadEnter")
+	// 	{
+	// 		SendMessage();
+	// 	}
+	// }
+	public async Task SendMessage() 
+	{
+		count++;
+		if (hubConnection != null)
+		{
+			MessageModel model;
+			// if (Message != string.Empty)
+			// {
+				if (count % 2 == 0)
+				{
+					model = new MessageModel() { SenderName = "John Doe", Content = Message, IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https:www.w3schools.com/howto/img_avatar.png" };
+				}
+				else
+				{
+					model = new MessageModel() { SenderName = "Jane Doe", Content = Message, IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https:www.w3schools.com/howto/img_avatar.png" };
+				}
+
+				await hubConnection.SendAsync("SendMessage", model);
+				Message = string.Empty;
+			// }
+		}
+    }
+
+    protected override async Task OnInitializedAsync()
     {
-        if (string.IsNullOrWhiteSpace(Message))
-            return;
-        //TODO: Send message
+        await Connect();
     }
 
     public async Task AttachImage()
