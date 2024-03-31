@@ -103,13 +103,13 @@
 	private IBrowserFile SelectedImage { get; set; }
 	int count = 0;
 
-	// public async Task Enter(KeyboardEventArgs e)
-	// {
-	// 	if (e.Code == "Enter" || e.Code == "NumpadEnter")
-	// 	{
-	// 		SendMessage();
-	// 	}
-	// }
+	public async Task Enter(KeyboardEventArgs e)
+	{
+		if (e.Code == "Enter" || e.Code == "NumpadEnter")
+		{
+			SendMessage();
+		}
+	}
 	public async Task SendMessage() 
 	{
 		count++;
