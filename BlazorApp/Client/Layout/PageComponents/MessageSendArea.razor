@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Components.Forms
+﻿﻿@using Microsoft.AspNetCore.Components.Forms
 @using System.IO
 @using BlazorApp.Shared
 @using System.Threading
@@ -7,87 +7,86 @@
 @inject NavigationManager NavigationManager
 
 <head>
-    <title>Conestoga Connects</title>
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	<title>Conestoga Connects</title>
+	<link rel="stylesheet" href="home.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
 <div class="message-send-area">
 	<input class="message-input" type="text" placeholder="Type a message" @bind="@Message" @onkeydown="@Enter">
-
-    <InputFile class="hidden-input" OnChange="@HandleFileSelection" accept="image/*"/> <!-- Hidden input for file attachment -->
-    <button class="attach-image-button" @onclick="AttachImage">
-        <i class="fas fa-image"></i>
-    </button>
-    <button class="send-message-button" @onclick="SendMessage">
-        <i class="fas fa-paper-plane"></i>
-    </button>
+	<InputFile class="hidden-input" OnChange="@HandleFileSelection" accept="image/*" /> <!-- Hidden input for file attachment -->
+	<button class="attach-image-button" @onclick="AttachImage">
+		<i class="fas fa-image"></i>
+	</button>
+	<button class="send-message-button" @onclick="SendMessage">
+		<i class="fas fa-paper-plane"></i>
+	</button>
 </div>
 <style>
-.message-send-area {
-    margin-top: auto;
-    position: sticky;
-    background: #fff;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    cursor: default; /* Set cursor to default */
-    user-select: none; /* Disable text selection */
-}
+	.message-send-area {
+		margin-top: auto;
+		position: sticky;
+		background: #fff;
+		padding: 10px;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		cursor: default; /* Set cursor to default */
+		user-select: none; /* Disable text selection */
+	}
 
-.message-input {
-    font-family: "Poppins", sans-serif;
-    width: calc(100% - 160px); /* Adjusted width for image attachment button */
-    height: 6vh;
-    padding: 5px;
-    margin-right: 10px;
-    box-sizing: border-box;
-    border-radius: 15px;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1em;
-    flex-grow: 1; /* Allow the input to grow to fill available space */
-    user-select: text; /* Enable text selection within the input */
-}
+	.message-input {
+		font-family: "Poppins", sans-serif;
+		width: calc(100% - 160px); /* Adjusted width for image attachment button */
+		height: 6vh;
+		padding: 5px;
+		margin-right: 10px;
+		box-sizing: border-box;
+		border-radius: 15px;
+		background-color: #e0e0e0;
+		border: 1px solid #ccc;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		font-size: 1em;
+		flex-grow: 1; /* Allow the input to grow to fill available space */
+		user-select: text; /* Enable text selection within the input */
+	}
 
-.send-message-button {
-    font-family: "Poppins", sans-serif;
-    width: 100px;
-    height: 5vh;
-    font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 15px;
-    background-color: #e0e0e0;
-    border: 1px solid #616161;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1em;
-    cursor: default; /* Set cursor to default */
-    user-select: none; /* Disable text selection */
-}
+	.send-message-button {
+		font-family: "Poppins", sans-serif;
+		width: 100px;
+		height: 5vh;
+		font-weight: 500;
+		padding: 5px 10px;
+		border-radius: 15px;
+		background-color: #e0e0e0;
+		border: 1px solid #616161;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		font-size: 1em;
+		cursor: default; /* Set cursor to default */
+		user-select: none; /* Disable text selection */
+	}
 
-.attach-image-button {
-    font-family: "Poppins", sans-serif;
-    width: 50px;
-    height: 5vh;
-    font-weight: 500;
-    gap: 5px;
-    padding: 5px;
-    border-radius: 15px;
-    background-color: #e0e0e0;
-    border: 1px solid #616161;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1em;
-    cursor: pointer; /* Set cursor to pointer */
-    user-select: none; /* Disable text selection */
-}
+	.attach-image-button {
+		font-family: "Poppins", sans-serif;
+		width: 50px;
+		height: 5vh;
+		font-weight: 500;
+		gap: 5px;
+		padding: 5px;
+		border-radius: 15px;
+		background-color: #e0e0e0;
+		border: 1px solid #616161;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		font-size: 1em;
+		cursor: pointer; /* Set cursor to pointer */
+		user-select: none; /* Disable text selection */
+	}
 
-.hidden-input {
-    display: none;
-}     
+	.hidden-input {
+		display: none;
+	}
 </style>
-	
+
 @code {
 	public HubConnection? hubConnection;
 	private async Task Connect()
@@ -103,6 +102,7 @@
 	private IBrowserFile SelectedImage { get; set; }
 	int count = 0;
 
+
 	public async Task Enter(KeyboardEventArgs e)
 	{
 		if (e.Code == "Enter" || e.Code == "NumpadEnter")
@@ -110,61 +110,39 @@
 			SendMessage();
 		}
 	}
-	public async Task SendMessage() 
+	public async Task SendMessage()
 	{
 		count++;
 		if (hubConnection != null)
 		{
 			MessageModel model;
-			// if (Message != string.Empty)
-			// {
-				if (count % 2 == 0)
-				{
-					model = new MessageModel() { SenderName = "John Doe", Content = Message, IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https:www.w3schools.com/howto/img_avatar.png" };
-				}
-				else
-				{
-					model = new MessageModel() { SenderName = "Jane Doe", Content = Message, IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https:www.w3schools.com/howto/img_avatar.png" };
-				}
+			if (count % 2 == 0)
+			{
+				model = new MessageModel() { SenderName = "John Doe", Content = Message, IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png" };
+			}
+			else
+			{
+				model = new MessageModel() { SenderName = "Jane Doe", Content = Message, IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png" };
+			}
 
-				await hubConnection.SendAsync("SendMessage", model);
-				Message = string.Empty;
-			// }
+			await hubConnection.SendAsync("SendMessage", model);
+			Message = string.Empty;
 		}
-    public async Task SendMessage() 
-    {
-        count++;
-        if (hubConnection != null)
-        {
-            MessageModel model;
-            if(count%2 == 0)
-            {
-                model = new MessageModel() { SenderName = "John Doe", Content = Message, IsSent = true, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png" };
-            }
-            else
-            {
-                model = new MessageModel() { SenderName = "Jane Doe", Content = Message, IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png" };
-            }
+	}
 
-            await hubConnection.SendAsync("SendMessage", model); 
-            Message = string.Empty;
-        }
-    }
+	protected override async Task OnInitializedAsync()
+	{
+		await Connect();
+	}
 
-    protected override async Task OnInitializedAsync()
-    {
-        await Connect();
-    }
+	public async Task AttachImage()
+	{
+		// Trigger file dialog programmatically using JSInterop
+		await JSRuntime.InvokeVoidAsync("triggerFileDialog");
+	}
 
-    public async Task AttachImage()
-    {
-        // Trigger file dialog programmatically using JSInterop
-        await JSRuntime.InvokeVoidAsync("triggerFileDialog");
-    }
-
-    public void HandleFileSelection(InputFileChangeEventArgs e)
-    {
-        SelectedImage = e.File;
-    }
+	public void HandleFileSelection(InputFileChangeEventArgs e)
+	{
+		SelectedImage = e.File;
+	}
 }
-

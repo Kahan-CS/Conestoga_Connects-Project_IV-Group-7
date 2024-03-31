@@ -1,3 +1,8 @@
+using BlazorApp.Server.Hubs;
+using BlazorApp.Server.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using BlazorApp.Server.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
