@@ -14,6 +14,11 @@ namespace BlazorApp.Server.Services
             _userCollection = database.GetCollection<ApplicationUser>("Users");
         }
 
+        public ApplicationUser getUserByUsernameAndPassword(string username, string password)
+        {
+            return _userCollection.Find(user => user.UserName == username && user.password == password).FirstOrDefault();
+        }
+
         public List<ApplicationUser> GetAllUsers()
         {
             return _userCollection.Find(_ => true).ToList();
