@@ -26,6 +26,8 @@ namespace BlazorApp.Server.Services
 
         public void InsertMessage(Message message)
         {
+            // Convert timestamp to local time before saving
+            message.Timestamp = message.Timestamp.ToLocalTime();
             _messageCollection.InsertOne(message);
         }
 
