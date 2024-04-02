@@ -41,7 +41,7 @@ namespace NUnitTests_Server.ServicesTests
             // Arrange: Create a new group
             var group = new Group { Name = "Test Group" };
 
-            // Act: Create the group
+            // Act: Insert the group
             _groupService.InsertGroup(group);
 
             // Assert: Check if the group is added to the database
@@ -51,9 +51,46 @@ namespace NUnitTests_Server.ServicesTests
         }
 
         [Test]
+        public void UpdateGroup_UpdatesGroupInDatabase()
+        {
+            // Arrange: Insert a dummy group
+            var group = new Group { Name = "Original Group" };
+            _groupService.InsertGroup(group);
+
+            // Modify the group
+            group.Name = "Updated Group";
+
+            // Act: Update the group
+            _groupService.UpdateGroup(group);
+
+            // Assert: Check if the group is updated in the database
+            var updatedGroup = _database.GetCollection<Group>("Groups").Find(g => g.Name == "Updated Group").FirstOrDefault();
+            Assert.IsNotNull(updatedGroup);
+            Assert.AreEqual(group.Name, updatedGroup.Name);
+        }
+
+        [Test]
+        public void GetAllGroups_ReturnsAllGroups()
+        {
+            // Arrange: Insert dummy groups
+            var group1 = new Group { Id = 1, Name = "Group 1" };
+            var group2 = new Group { Id =2, Name = "Group 2" };
+            _groupService.InsertGroup(group1);
+            _groupService.InsertGroup(group2);
+
+            // Act: Get all groups
+            var groups = _groupService.GetAllGroups();
+
+            // Assert: Check if all groups are returned
+            Assert.AreEqual(2, groups.Count);
+            Assert.IsTrue(groups.Exists(g => g.Name == "Group 1"));
+            Assert.IsTrue(groups.Exists(g => g.Name == "Group 2"));
+        }
+
+        [Test]
         public void GetGroupById_ReturnsGroup()
         {
-            // Arrange: Create a new group
+            // Arrange: Insert a dummy group
             var group = new Group { Name = "Test Group" };
             _groupService.InsertGroup(group);
 
@@ -65,13 +102,26 @@ namespace NUnitTests_Server.ServicesTests
             Assert.AreEqual(group.Name, retrievedGroup.Name);
         }
 
-        // Add more test cases as needed for other methods of the GroupService
+        [Test]
+        public void DeleteGroup_RemovesGroupFromDatabase()
+        {
+            // Arrange: Insert a dummy group
+            var group = new Group { Name = "Test Group" };
+            _groupService.InsertGroup(group);
+
+            // Act: Delete the group
+            _groupService.DeleteGroup(group.Id);
+
+            // Assert: Check if the group is removed from the database
+            var deletedGroup = _database.GetCollection<Group>("Groups").Find(g => g.Name == "Test Group").FirstOrDefault();
+            Assert.IsNull(deletedGroup);
+        }
 
         [TearDown]
         public void Teardown()
         {
-            // Clean up after each test if necessary
-            _database.GetCollection<Group>("Groups").DeleteMany(_ => true);
+            // Clean up the database after each test
+            _database.DropCollection("Groups");
         }
     }
 }
