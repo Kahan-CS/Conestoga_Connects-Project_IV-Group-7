@@ -32,6 +32,7 @@ try
     }
 
     builder.Services.AddSingleton(mongoSettings);
+    builder.Services.AddScoped<UserService>();
     builder.Services.AddSingleton<IMongoClient>(sp =>
     {
         try
