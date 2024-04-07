@@ -88,6 +88,21 @@ namespace NUnitTests_Server.ServicesTests
         }
 
         [Test]
+        public void InsertDummyUsers_AddsDummyUserToDatabase()
+        {
+            // Arrange: Create a new user
+            var user = new ApplicationUser { UserName = "dummy1", Email = "dummy1@example.com",  };
+
+            // Act: Insert the user
+            _userService.InsertUser(user);
+
+            // Assert: Check if the user is added to the database
+            var retrievedUser = _database.GetCollection<ApplicationUser>("Users").Find(u => u.UserName == "user1").FirstOrDefault();
+            Assert.IsNotNull(retrievedUser);
+            Assert.AreEqual(user.Email, retrievedUser.Email);
+        }
+
+        [Test]
         public void UpdateUser_UpdatesUserInDatabase()
         {
             // Arrange: Insert a dummy user

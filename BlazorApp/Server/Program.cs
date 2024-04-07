@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
+using BlazorApp.Server.Services;
 using MongoDB.Driver;
 using System;
 
@@ -29,6 +30,7 @@ try
     }
 
     builder.Services.AddSingleton(mongoSettings);
+    builder.Services.AddScoped<UserService>();
     builder.Services.AddSingleton<IMongoClient>(sp =>
     {
         try
