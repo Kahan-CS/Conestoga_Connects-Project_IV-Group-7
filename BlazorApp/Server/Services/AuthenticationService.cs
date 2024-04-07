@@ -1,6 +1,4 @@
 ﻿using BlazorApp.Shared;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
@@ -8,6 +6,7 @@ namespace BlazorApp.Server.Services
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Consumes("application/json")]
     public class AuthController : ControllerBase
     {
         private readonly UserService _userService;
