@@ -1,5 +1,6 @@
 ﻿@page "/signup"
 @inject NavigationManager NavigationManager
+@inject HttpClient HttpClient
 
 @using BlazorApp.Shared
 @using BlazorApp.Client.Layout.PageComponents
@@ -17,12 +18,24 @@
     </div>
 </EditForm>
 
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+        <div class="error-message">
+        @errorMessage
+        </div>
+}
+
 <style> 
 
     * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+    }
+    .error-message {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
     }
     body {
         background-color: #556c6d;
@@ -76,8 +89,21 @@
 
 @code {
     SignupFormModel signupForm = new SignupFormModel();
-    private void HandleSignup()
+    string errorMessage;
+
+    private async Task HandleSignup()
     {
-        NavigationManager.NavigateTo("/login");//redirect to login page -- not implemented yet
+        var response = await HttpClient.PostAsJsonAsync("/api/Signup/signup", signupForm);
+
+        if (response.IsSuccessStatusCode)
+        {
+            //Redirect to login page on successful signup
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            //Handle unsuccessful signup (e.g., display error message)
+            errorMessage = "An error occurred while signing up. Please try again.";
+        }
     }
 }

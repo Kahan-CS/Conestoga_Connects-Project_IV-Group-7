@@ -1,11 +1,11 @@
-﻿using BlazorApp.Shared;
+﻿using BlazorApp.Server.Services;
+using BlazorApp.Shared;
 using Microsoft.AspNetCore.Mvc;
-using System.Text;
 
-namespace BlazorApp.Server.Services
+namespace BlazorApp.Server.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/Auth/")]
     [Consumes("application/json")]
     public class AuthController : ControllerBase
     {
@@ -23,7 +23,6 @@ namespace BlazorApp.Server.Services
             {
                 string username = model.Username;
                 string password = model.Password;
-                
 
                 var user = _userService.getUserByUsernameAndPassword(username, password);
                 if (user != null)
