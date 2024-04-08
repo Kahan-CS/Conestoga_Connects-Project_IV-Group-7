@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using MongoDB.Driver;
 using System;
 using BlazorApp.Server.Services;
+using BlazorApp.Server.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,7 +59,6 @@ try
     });
 
     
-    builder.Services.AddControllersWithViews();
     builder.Services.AddRazorPages();
 }
 catch (Exception ex)
@@ -67,6 +67,10 @@ catch (Exception ex)
     // Handle the exception gracefully, e.g., log it and exit the application
     Environment.Exit(1);
 }
+builder.Services.AddControllersWithViews();
+//register controllers
+
+builder.Services.AddControllers(); 
 
 var app = builder.Build();
 
@@ -99,6 +103,11 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.UseHttpsRedirection();
 

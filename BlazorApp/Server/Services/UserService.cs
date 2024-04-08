@@ -24,6 +24,11 @@ namespace BlazorApp.Server.Services
             return _userCollection.Find(_ => true).ToList();
         }
 
+        public bool IsUsernameTaken(string username)
+        {
+            return _userCollection.Find(user => user.UserName == username).Any();
+        }
+
         public ApplicationUser GetUserById(string id)
         {
             return _userCollection.Find(user => user.Id == id).FirstOrDefault();
