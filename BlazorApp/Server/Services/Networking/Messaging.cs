@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -12,6 +12,7 @@ public class Message
 	public string SenderID { get; set; }
 	public string ReceiverID { get; set; }
 	public string Timestamp { get; set; }
+    public int Id { get; internal set; }
 }
 
 public class Program
@@ -69,3 +70,4 @@ public class Program
 }
 
 
+*/

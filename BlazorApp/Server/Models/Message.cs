@@ -7,7 +7,7 @@ namespace BlazorApp.Server.Models
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public DateTime Timestamp { get; set; }
+        public DateTimeOffset Timestamp { get; set; } = DateTimeOffset.Now; // Initialize to current local time with offset
 
         // Foreign key to the user who sent the message
         public string UserId { get; set; }
