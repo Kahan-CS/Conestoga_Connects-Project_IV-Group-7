@@ -11,6 +11,7 @@ namespace BlazorApp.Shared
         public string Content { get; set; }
         public DateTimeOffset Time { get; set; }
         public bool IsSent { get; set; }
+        public string SenderName { get; set; }
         public string SenderId { get; set; } // Change to SenderId
         public string SenderProfileImageUrl { get; set; }
         public string ReceiverId { get; set; }
