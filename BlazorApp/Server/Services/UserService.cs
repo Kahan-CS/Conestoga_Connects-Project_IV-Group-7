@@ -48,6 +48,43 @@ namespace BlazorApp.Server.Services
         {
             _userCollection.DeleteOne(user => user.Id == id);
         }
+
+        // CRUD operations for contacts
+
+        public void AddContact(string username, Contact contact)
+        {
+            // Check if the contact username corresponds to an existing user
+            if (!IsUsernameTaken(contact.Username))
+            {
+                // Handle the case where the contact username does not exist
+                throw new Exception($"User with username {contact.Username} does not exist.");
+            }
+
+            // Add the contact to the user's contacts list
+            var filter = Builders<ApplicationUser>.Filter.Eq(u => u.UserName, username);
+            var update = Builders<ApplicationUser>.Update.Push(u => u.Contacts, contact);
+            _userCollection.UpdateOne(filter, update);
+        }
+
+
+        public Contact GetContactByUsername(string username, string contactUsername)
+        {
+            var user = _userCollection.Find(u => u.UserName == username).FirstOrDefault();
+            return user?.Contacts.FirstOrDefault(c => c.Username == contactUsername);
+        }
+
+        public List<Contact> GetAllContacts(string username)
+        {
+            var user = _userCollection.Find(u => u.UserName == username).FirstOrDefault();
+            return user?.Contacts ?? new List<Contact>();
+        }
+
+        public void DeleteContact(string username, string contactUsername)
+        {
+            var filter = Builders<ApplicationUser>.Filter.Eq(u => u.UserName, username);
+            var update = Builders<ApplicationUser>.Update.PullFilter(u => u.Contacts, c => c.Username == contactUsername);
+            _userCollection.UpdateOne(filter, update);
+        }
     }
 }
 
