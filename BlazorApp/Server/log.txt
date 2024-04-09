@@ -10,6 +10,12 @@ CLIENT: Requesting user dummy1
 SERVER: Sending user dummy1
 CLIENT: Login attempt for username: dummy1
 SERVER: Login successful for username: dummy1
+CLIENT: Requesting contacts for user dummy1
+SERVER: Sending contacts for user dummy1
+CLIENT: Requesting contacts for user dummy1
+SERVER: Sending contacts for user dummy1
+CLIENT: Requesting contacts for user dummy1
+SERVER: Sending contacts for user dummy1
 CLIENT: Login attempt for username: askjdfguasjddhfoi;asdd
 SERVER: Login failed for username: askjdfguasjddhfoi;asdd
 CLIENT: Login attempt for username: dummy1
