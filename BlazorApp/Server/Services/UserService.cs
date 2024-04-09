@@ -9,6 +9,10 @@ namespace BlazorApp.Server.Services
     {
         private readonly IMongoCollection<ApplicationUser> _userCollection;
 
+        public void DeleteUserByUsername(string username)
+        {
+            _userCollection.DeleteOne(user => user.UserName == username);
+        }
         public UserService(IMongoDatabase database)
         {
             _userCollection = database.GetCollection<ApplicationUser>("Users");
