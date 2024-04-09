@@ -1,0 +1,62 @@
+@startuml
+
+allowmixing
+
+skinparam backgroundcolor AntiqueWhite-Gold
+
+<style>
+
+
+Title {
+  FontStyle bold
+  FontSize 24
+  BackgroundColor none
+}
+
+rectangle {
+	fontsize 16
+	fontcolor black
+    backgroundcolor whitesmoke-gainsboro
+    linecolor black
+    linethickness 1.0
+    roundcorner 20
+
+}
+
+arrow {
+linecolor blue
+linethickness 2.4
+fontstyle bold
+}
+
+
+</style>
+
+top to bottom direction
+
+Title "Git Development Workflow"
+
+rectangle "main"
+
+rectangle "dev"
+
+rectangle "dev-backend"
+rectangle "dev-backend-jon"
+rectangle "dev-backend-kahan"
+
+rectangle "dev-gui"
+rectangle "dev-gui-devon"
+rectangle "dev-gui-gitesh"
+rectangle "dev-gui-kalp"
+
+"main"				<--		"dev"
+"dev"				<--		"dev-gui"
+"dev"				<--		"dev-backend"
+"dev-backend"		<--		"dev-backend-jon"
+"dev-backend"		<--		"dev-backend-kahan"
+"dev-gui"			<--		"dev-gui-devon"
+"dev-gui"			<--		"dev-gui-gitesh"
+"dev-gui"			<--		"dev-gui-kalp"
+
+@enduml
+

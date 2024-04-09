@@ -1,0 +1,68 @@
+@startuml
+
+skinparam backgroundcolor AntiqueWhite/seashell
+
+skinparam state {
+	StartColor<<Apache>> MediumBlue
+	EndColor Red
+    BackgroundColor LightSteelBlue/LightSlateGray
+	BackgroundColor<<Warning>> Olive
+    BorderColor Black
+    FontName "Times New Roman"
+    FontStyle bold
+    FontSize 18
+}
+
+skinparam Title {
+  BackgroundColor none
+  FontStyle bold
+  FontSize 24
+  FontColor black
+}
+
+<style>
+
+arrow {
+linecolor DarkGreen
+linethickness 1.8
+fontstyle bold
+fontsize 16
+}
+
+
+</style>
+
+top to bottom direction
+
+Title "Conestoga Connects: Server State Machine"
+
+[*] --> InitialWaitingState : Start
+
+InitialWaitingState --> WaitingForConnectionTokenState : Received Connection Token
+
+WaitingForConnectionTokenState --> LoggingInState : Receive client action requests
+
+LoggingInState --> LoggingInState : Re-enter password (1st or 2nd attempt)
+LoggingInState --> BlockedState : 3rd unsuccessful attempt
+LoggingInState --> LoggedInState : Successful login
+
+BlockedState --> BlockedState : Double block duration \nfor each consecutive failure
+BlockedState --> LoggingInState : Unblock after block duration
+
+LoggedInState --> LoggedInState : Monitor incoming/outgoing messages
+LoggedInState --> RelaxedState : Idle for 15-30 mins
+
+RelaxedState --> LoggedInState : Activity detected: \nResume monitoring messages
+RelaxedState --> SleepingState : Idle for over 30 mins
+
+SleepingState --> LoggedInState : Activity detected: \nResume monitoring messages
+SleepingState --> LoggedOutState : Idle for over 2 hours
+
+/' LoggedOutState --> InitialWaitingState : Disconnect '/
+
+LoggedOutState --> [*]
+
+
+@enduml
+
+
