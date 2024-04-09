@@ -53,18 +53,33 @@ namespace BlazorApp.Server.Services
 
         public void AddContact(string username, Contact contact)
         {
-            // Check if the contact username corresponds to an existing user
-            if (!IsUsernameTaken(contact.Username))
+            // Check if the user exists
+            if (!IsUsernameTaken(username))
             {
-                // Handle the case where the contact username does not exist
-                throw new Exception($"User with username {contact.Username} does not exist.");
+                throw new Exception($"User with username '{username}' not found.");
             }
+
+
+            // Check if the contact already exists for the user
+            if (GetContactByUsername(username, contact.Username) != null)
+            {
+                throw new Exception($"Contact with username '{contact.Username}' already exists for user '{username}'.");
+            }
+
+            // Check if the contact username matches the user's username
+            if (contact.Username == username)
+            {
+                throw new Exception($"Cannot add user '{username}' as a contact for themselves.");
+            }
+
+
 
             // Add the contact to the user's contacts list
             var filter = Builders<ApplicationUser>.Filter.Eq(u => u.UserName, username);
             var update = Builders<ApplicationUser>.Update.Push(u => u.Contacts, contact);
             _userCollection.UpdateOne(filter, update);
         }
+
 
 
         public Contact GetContactByUsername(string username, string contactUsername)
