@@ -109,5 +109,5 @@ namespace UnitTests
             // Assert
             Assert.NotNull(emailInput);
         }
-        }
+    }
 }
