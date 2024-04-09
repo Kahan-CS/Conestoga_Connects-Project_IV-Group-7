@@ -39,9 +39,7 @@ namespace BlazorApp.Server.Controllers
             return Ok(contactModels);
         }
 
-        [HttpPost("{username}")]
-/*        [Consumes("application/json")]
-*/        
+        [HttpPost("{username}")] 
         public IActionResult AddContact(string username, [FromBody] ContactModel contact)
         {
             logger.Log($"CLIENT: Adding contact for user {username}");

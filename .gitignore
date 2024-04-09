@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /NUnitTests-Server
 /HomePageUnitTests/UnitTests.csproj
+/BlazorApp/Server/log.txt
