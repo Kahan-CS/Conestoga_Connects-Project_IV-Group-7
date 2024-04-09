@@ -50,8 +50,17 @@
 
     private async Task HandleClick()
     {
-        Console.WriteLine("Contact Clicked");
-        await OnClick.InvokeAsync();
+        //If the commponent is used for searching, then add the contact to the users contacts
+        if (IsForSearching)
+        {
+            //await ContactService.AddContact(contactModel);
+        }
+        else
+        {
+            //If the component is used for navigating between chats, invoke the event callback to notify the parent
+            //component about the contact selection
+            await OnContactSelected.InvokeAsync(ContactModel);
+        }
     }
 }
 
