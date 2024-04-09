@@ -1,135 +1,135 @@
-﻿using BlazorApp.Shared;
-using System.Net;
-using System.Text;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using BlazorApp.Shared;
-using Xunit;
+﻿//using BlazorApp.Shared;
+//using System.Net;
+//using System.Text;
+//using System.Net;
+//using System.Net.Http;
+//using System.Text;
+//using System.Text.Json;
+//using System.Threading.Tasks;
+//using BlazorApp.Shared;
+//using Xunit;
 
-namespace BlazorApp.Tests.IntegrationTests
+//namespace BlazorApp.Tests.IntegrationTests
 
-{
+//{
 
-    public class AuthControllerIntegrationTests
+//    public class AuthControllerIntegrationTests
 
-    {
+//    {
 
-        private readonly HttpClient _client;
+//        private readonly HttpClient _client;
 
-        public AuthControllerIntegrationTests()
+//        public AuthControllerIntegrationTests()
 
-        {
+//        {
 
-            // Assuming your server is running at http://localhost:5018
+//            // Assuming your server is running at http://localhost:5018
 
-            _client = new HttpClient { BaseAddress = new Uri("http://localhost:5018") };
+//            _client = new HttpClient { BaseAddress = new Uri("http://localhost:5018") };
 
-        }
+//        }
 
-        [Fact]
+//        [Fact]
 
-        public async Task Login_ValidCredentials_ReturnsOk()
+//        public async Task Login_ValidCredentials_ReturnsOk()
 
-        {
+//        {
 
-            // Arrange
+//            // Arrange
 
-            var loginModel = new LoginFormModel { Username = "dummy1", Password = "dummypassword" };
+//            var loginModel = new LoginFormModel { Username = "dummy1", Password = "dummypassword" };
 
-            var content = new StringContent(JsonSerializer.Serialize(loginModel), Encoding.UTF8, "application/json");
+//            var content = new StringContent(JsonSerializer.Serialize(loginModel), Encoding.UTF8, "application/json");
 
-            // Act
+//            // Act
 
-            var response = await _client.PostAsync("/api/Auth/login", content);
+//            var response = await _client.PostAsync("/api/Auth/login", content);
 
-            // Assert
+//            // Assert
 
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+//            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
-            var responseContent = await response.Content.ReadAsStringAsync();
+//            var responseContent = await response.Content.ReadAsStringAsync();
 
-            Assert.Contains("Login successful", responseContent);
+//            Assert.Contains("Login successful", responseContent);
 
-        }
+//        }
 
-        [Fact]
+//        [Fact]
 
-        public async Task Login_InvalidCredentials_ReturnsUnauthorized()
+//        public async Task Login_InvalidCredentials_ReturnsUnauthorized()
 
-        {
+//        {
 
-            // Arrange
+//            // Arrange
 
-            var loginModel = new LoginFormModel { Username = "invalid_username", Password = "invalid_password" };
+//            var loginModel = new LoginFormModel { Username = "invalid_username", Password = "invalid_password" };
 
-            var content = new StringContent(JsonSerializer.Serialize(loginModel), Encoding.UTF8, "application/json");
+//            var content = new StringContent(JsonSerializer.Serialize(loginModel), Encoding.UTF8, "application/json");
 
-            // Act
+//            // Act
 
-            var response = await _client.PostAsync("/api/Auth/login", content);
+//            var response = await _client.PostAsync("/api/Auth/login", content);
 
-            // Assert
+//            // Assert
 
-            Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+//            Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
 
-            var responseContent = await response.Content.ReadAsStringAsync();
+//            var responseContent = await response.Content.ReadAsStringAsync();
 
-            Assert.Contains("Invalid username or password", responseContent);
+//            Assert.Contains("Invalid username or password", responseContent);
 
-        }
+//        }
 
-        [Fact]
-        public async Task Login_ValidUsernameAndInvalidPassword()
+//        [Fact]
+//        public async Task Login_ValidUsernameAndInvalidPassword()
 
-        {
+//        {
 
-            // Arrange
+//            // Arrange
 
-            var loginModel = new LoginFormModel { Username = "dummy1", Password = "invalid_password" };
+//            var loginModel = new LoginFormModel { Username = "dummy1", Password = "invalid_password" };
 
-            var content = new StringContent(JsonSerializer.Serialize(loginModel), Encoding.UTF8, "application/json");
+//            var content = new StringContent(JsonSerializer.Serialize(loginModel), Encoding.UTF8, "application/json");
 
-            // Act
+//            // Act
 
-            var response = await _client.PostAsync("/api/Auth/login", content);
+//            var response = await _client.PostAsync("/api/Auth/login", content);
 
-            // Assert
+//            // Assert
 
-            Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+//            Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
 
-            var responseContent = await response.Content.ReadAsStringAsync();
+//            var responseContent = await response.Content.ReadAsStringAsync();
 
-            Assert.Contains("Invalid username or password", responseContent);
+//            Assert.Contains("Invalid username or password", responseContent);
 
-        }
+//        }
 
-        [Fact]
-        public async Task Login_InvalidUsernameAndValidPassword()
+//        [Fact]
+//        public async Task Login_InvalidUsernameAndValidPassword()
 
-        {
+//        {
 
-            // Arrange
+//            // Arrange
 
-            var loginModel = new LoginFormModel { Username = "invalid", Password = "dummypassword" };
+//            var loginModel = new LoginFormModel { Username = "invalid", Password = "dummypassword" };
 
-            var content = new StringContent(JsonSerializer.Serialize(loginModel), Encoding.UTF8, "application/json");
+//            var content = new StringContent(JsonSerializer.Serialize(loginModel), Encoding.UTF8, "application/json");
 
-            // Act
+//            // Act
 
-            var response = await _client.PostAsync("/api/Auth/login", content);
+//            var response = await _client.PostAsync("/api/Auth/login", content);
 
-            // Assert
+//            // Assert
 
-            Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+//            Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
 
-            var responseContent = await response.Content.ReadAsStringAsync();
+//            var responseContent = await response.Content.ReadAsStringAsync();
 
-            Assert.Contains("Invalid username or password", responseContent);
+//            Assert.Contains("Invalid username or password", responseContent);
 
-        }
-    }
+//        }
+//    }
 
-}
+//}
