@@ -1,11 +1,16 @@
 using BlazorApp.Server.Models;
 using BlazorApp.Server.Utilities;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
 using MongoDB.Driver;
 using System;
+using BlazorApp.Server.Services;
+using BlazorApp.Server.Controllers;
+using BlazorApp.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,8 +32,9 @@ try
     {
         throw new Exception("MongoDB connection string is empty or null.");
     }
-
+    builder.Services.AddSingleton<Logger>();
     builder.Services.AddSingleton(mongoSettings);
+    builder.Services.AddScoped<UserService>();
     builder.Services.AddSingleton<IMongoClient>(sp =>
     {
         try
@@ -54,7 +60,6 @@ try
     });
 
     
-    builder.Services.AddControllersWithViews();
     builder.Services.AddRazorPages();
 }
 catch (Exception ex)
@@ -63,6 +68,10 @@ catch (Exception ex)
     // Handle the exception gracefully, e.g., log it and exit the application
     Environment.Exit(1);
 }
+builder.Services.AddControllersWithViews();
+//register controllers
+
+builder.Services.AddControllers(); 
 
 var app = builder.Build();
 
@@ -96,6 +105,11 @@ else
     app.UseHsts();
 }
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
@@ -111,3 +125,4 @@ app.MapFallbackToFile("index.html");
 Console.WriteLine("Application started.");
 
 app.Run();
+

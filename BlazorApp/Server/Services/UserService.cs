@@ -14,14 +14,40 @@ namespace BlazorApp.Server.Services
             _userCollection = database.GetCollection<ApplicationUser>("Users");
         }
 
+        public ApplicationUser getUserByUsernameAndPassword(string username, string password)
+        {
+            return _userCollection.Find(user => user.UserName == username && user.password == password).FirstOrDefault();
+        }
+
+        public ApplicationUser GetUserByUsername(string username)
+        {
+            return _userCollection.Find(user => user.UserName == username).FirstOrDefault();
+        }
+
         public List<ApplicationUser> GetAllUsers()
         {
             return _userCollection.Find(_ => true).ToList();
         }
 
+        public bool IsUsernameTaken(string username)
+        {
+            return _userCollection.Find(user => user.UserName == username).Any();
+        }
+
         public ApplicationUser GetUserById(string id)
         {
             return _userCollection.Find(user => user.Id == id).FirstOrDefault();
+        }
+
+        public void DeleteUserByUsername(string username)
+        {
+            _userCollection.DeleteOne(user => user.UserName == username);
+        }
+
+        public List<Contact> GetUserContacts(string username)
+        {
+            var user = _userCollection.Find(u => u.UserName == username).FirstOrDefault();
+            return user?.Contacts ?? new List<Contact>(); 
         }
 
         public void InsertUser(ApplicationUser user)

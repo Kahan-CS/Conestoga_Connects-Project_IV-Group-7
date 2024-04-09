@@ -1,0 +1,12 @@
+CLIENT: Login attempt for username: sdfsdf
+SERVER: Login failed for username: sdfsdf
+CLIENT: Signup attempt for username: sdfsdf
+SERVER: Signup successful for username: sdfsdf
+CLIENT: Login attempt for username: sdfsdf
+SERVER: Login failed for username: sdfsdf
+CLIENT: Requesting all users
+SERVER: Sending all users
+CLIENT: Requesting user dummy1
+SERVER: Sending user dummy1
+CLIENT: Login attempt for username: dummy1
+SERVER: Login successful for username: dummy1
