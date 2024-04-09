@@ -10,6 +10,7 @@ using MongoDB.Driver;
 using System;
 using BlazorApp.Server.Services;
 using BlazorApp.Server.Controllers;
+using BlazorApp.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,7 @@ try
     {
         throw new Exception("MongoDB connection string is empty or null.");
     }
-
+    builder.Services.AddSingleton<Logger>();
     builder.Services.AddSingleton(mongoSettings);
     builder.Services.AddScoped<UserService>();
     builder.Services.AddSingleton<IMongoClient>(sp =>

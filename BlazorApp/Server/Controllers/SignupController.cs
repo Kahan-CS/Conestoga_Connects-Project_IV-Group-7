@@ -11,9 +11,11 @@ namespace BlazorApp.Server.Controllers
     public class SignupController : ControllerBase
     {
         private readonly UserService _userService;
+        private readonly Logger logger;
         public SignupController(UserService userService)
         {
             _userService = userService;
+            logger = new Logger();
         }
 
 
@@ -21,11 +23,13 @@ namespace BlazorApp.Server.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] SignupFormModel model)
         {
+            logger.Log("CLIENT: Signup attempt for username: " + model.Username);
             if (ModelState.IsValid)
             {
-                // Check if the username is already taken
+                //Check if the username is already taken
                 if (_userService.IsUsernameTaken(model.Username))
                 {
+                    logger.Log("SERVER: Username already taken: " + model.Username); 
                     return BadRequest(new { Message = "Username already taken" });
                 }
 
@@ -37,8 +41,11 @@ namespace BlazorApp.Server.Controllers
                 };
 
                 _userService.InsertUser(user);
+                logger.Log("SERVER: Signup successful for username: " + model.Username);
                 return Ok(new { Message = "User created successfully" });
             }
+
+            logger.Log("SERVER: Signup failed for username: " + model.Username);
             return BadRequest(new { Message = "Invalid input data" });
         }
     }

@@ -100,21 +100,16 @@
 
     private async Task HandleLogin()
     {
-        try
-        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/auth/login");
             var response = await httpClient.PostAsJsonAsync("api/auth/login", loginForm);
             if (response.IsSuccessStatusCode)
             {
-                NavigationManager.NavigateTo("/home"); // Redirect to home page on successful login
+            NavigationManager.NavigateTo("/home?loggedInUser=" + loginForm.Username); // Redirect to home page with loggedInUser parameter
             }
             else
             {
                 errorMessage = "Invalid username or password."; // Display error message if login fails
             }
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Error: {ex.Message}"; // Display error message if an exception occurs
         }
     }
 }
