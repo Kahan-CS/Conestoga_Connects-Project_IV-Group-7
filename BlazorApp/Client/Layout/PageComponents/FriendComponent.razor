@@ -9,7 +9,7 @@
 <div class="contact" @onclick="HandleClick">
     <ProfileImageComponent ImageUrl="@contactModel.ImageUrl" Size="50px"/>
     <div class="contact-name"> <!--Div used to display the element on two different lines-->
-        <p><b>@contactModel.Name</b></p>
+        <p><b>@contactModel.Username</b></p>
         <ButtonComponent Text="Delete" backgroundColor=" #ff4d4d" hoverColor="#cc0000" Width="4vw" FontSize="14px" Height="5vh" OnClick="DeleteToggle" />
     </div>
 </div>

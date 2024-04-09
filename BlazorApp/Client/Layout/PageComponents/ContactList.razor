@@ -3,16 +3,21 @@
 
 @if (Contacts != null && Contacts.Any())
 {
-    <div class="contact-list">
+        <div class="contact-list">
         @foreach (var contact in Contacts)
         {
-            <ContactComponent contactModel="@contact"/>
+                    <ContactComponent contactModel="@contact" IsForSearching="@IsForSearching" OnContactSelected="@OnContactSelected"/>
         }
 
         @if (Contacts.Count == 0)
         {
+                    <p>No contacts available.</p>
         }
-    </div>
+        </div>
+}
+else
+{
+        <p>No contacts available.</p>
 }
 
 <style>
@@ -29,7 +34,15 @@
     public List<ContactModel> Contacts { get; set; }
 
     [Parameter]
+    public EventCallback<ContactModel> OnContactSelected { get; set; }
+
+    [Parameter]
+    public bool IsForSearching { get; set; }
+
+    [Parameter]
     public string Width { get; set; }
     [Parameter]
     public string Height { get; set; }
+
 }
+

@@ -1,7 +1,10 @@
 ﻿@page "/login"
 @inject NavigationManager NavigationManager
+@inject HttpClient httpClient
 @using BlazorApp.Shared
 @using BlazorApp.Client.Layout.PageComponents
+@using System.Net.Http
+@using System.Net.Http.Json
 
 
 <head>
@@ -11,18 +14,20 @@
 
 <body>
 <TitleComponent Title="Conestoga Connects" Level="1" />
-
-
     <EditForm Model="@loginForm" OnValidSubmit="HandleLogin" class="login-form">
     <TitleComponent Title="Login" Level="3" />
         <TextInputComponent Label="Username" Placeholder="Username" Icon="fas fa-user" @bind-value="loginForm.Username" />
         <TextInputComponent Label="Password" Placeholder="Password" Icon="fas fa-lock" Type="password" @bind-value="loginForm.Password" />
     <LinkComponent Href="#" Text="Forgot Password?" AriaLabel="Forgot password link" class="forgot-password" />
-   
     <ButtonComponent Text="Login" Type="submit" Width="100%" /> 
-   
     <LinkComponent Href="/signup" Text="Sign-Up" AriaLabel="Sign up link" class="sign-up" />
-
+    <!-- Add this div for the error message below the signup link -->
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="error-message" style="color: red; font-size: 14px; margin-top: 10px; text-align: center;">
+                @errorMessage
+            </div>
+        }
 </EditForm>
 
 </body>
@@ -38,6 +43,8 @@
     body {
         background-color: #556c6d;
     }
+
+    
 
     i {
         margin-left: 5px;
@@ -85,24 +92,25 @@
     }
 
 </style>
- 
+
 
 @code {
     private LoginFormModel loginForm = new LoginFormModel();
+    private string errorMessage;
 
-    private void HandleLogin()
+    private async Task HandleLogin()
     {
-        NavigationManager.NavigateTo("/home"); // Redirect to home page -- not implemented yet
-    }
-
-    // TODO: add implementation
-    private void HandleForgotPassword()
-    {
-
-    }
-
-    private void HandleSignUp()
-    {
-        
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/auth/login");
+            var response = await httpClient.PostAsJsonAsync("api/auth/login", loginForm);
+            if (response.IsSuccessStatusCode)
+            {
+            NavigationManager.NavigateTo("/home?loggedInUser=" + loginForm.Username); // Redirect to home page with loggedInUser parameter
+            }
+            else
+            {
+                errorMessage = "Invalid username or password."; // Display error message if login fails
+            }
+        }
     }
 }
+

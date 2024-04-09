@@ -104,7 +104,7 @@
     private void SearchContacts()
     {
         FilteredContacts = Contacts
-            .Where(c => string.IsNullOrWhiteSpace(SearchQuery) || c.Name.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
+            .Where(c => string.IsNullOrWhiteSpace(SearchQuery) || c.Username.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
             .ToList();
     }
 }
