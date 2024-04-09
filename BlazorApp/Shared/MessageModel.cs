@@ -9,10 +9,12 @@ namespace BlazorApp.Shared
     public class MessageModel
     {
         public string Content { get; set; }
-        public DateTime Time { get; set; }
-        public bool IsSent { get; set; } //True for sent, false for received
-        public string SenderName { get; set; } //Add this for the sender's name
-        public string SenderProfileImageUrl { get; set; } //Add this for the sender's profile image URL
+        public DateTimeOffset Time { get; set; }
+        public bool IsSent { get; set; }
+        public string SenderId { get; set; } // Change to SenderId
+        public string SenderProfileImageUrl { get; set; }
+        public string ReceiverId { get; set; }
         public string ImageUrl { get; set; }
     }
 }
+
