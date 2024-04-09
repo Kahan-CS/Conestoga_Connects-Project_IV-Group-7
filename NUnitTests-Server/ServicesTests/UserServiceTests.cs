@@ -91,15 +91,17 @@ namespace NUnitTests_Server.ServicesTests
         public void InsertDummyUsers_AddsDummyUserToDatabase()
         {
             // Arrange: Create a new user
-            var user = new ApplicationUser { UserName = "dummy1", Email = "dummy1@example.com",  };
+            var user = new ApplicationUser { UserName = "dummy1", Email = "dummy1@example.com", password = "dummypassword" };
 
             // Act: Insert the user
             _userService.InsertUser(user);
 
             // Assert: Check if the user is added to the database
-            var retrievedUser = _database.GetCollection<ApplicationUser>("Users").Find(u => u.UserName == "user1").FirstOrDefault();
+            var retrievedUser = _database.GetCollection<ApplicationUser>("Users").Find(u => u.UserName == "dummy1").FirstOrDefault();
             Assert.IsNotNull(retrievedUser);
+            Assert.AreEqual(user.UserName, retrievedUser.UserName);
             Assert.AreEqual(user.Email, retrievedUser.Email);
+            Assert.AreEqual(user.password, retrievedUser.password);
         }
 
         [Test]
