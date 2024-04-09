@@ -4,6 +4,7 @@
 
 @using BlazorApp.Shared
 @using BlazorApp.Client.Layout.PageComponents
+@using System.Text.Json
 
 <TitleComponent Title="Conestoga Connects" Level="1" />
 
@@ -14,14 +15,18 @@
     <TextInputComponent Label="Email" Placeholder="Email" @bind-value="signupForm.Email"/> 
 
     <div class="form-group">
-        <ButtonComponent Text="Sign-Up" Type="submit"/>
+        <ButtonComponent Text="Sign-Up" Type="submit" />
+        <a class="ml-2" href="/login">Already have an account? Login</a>
     </div>
 </EditForm>
 
-@if (!string.IsNullOrEmpty(errorMessage))
+@if (errorMessages != null && errorMessages.Any())
 {
         <div class="error-message">
-        @errorMessage
+        @foreach (var errorMessage in errorMessages)
+        {
+                    <div>@errorMessage</div>
+        }
         </div>
 }
 
@@ -85,11 +90,14 @@
         font-weight: 500;
         user-select: none;
     }
+.ml-2 {
+        margin-left: 80px; /* Adjust this value as needed */
+    }
 </style>
 
 @code {
     SignupFormModel signupForm = new SignupFormModel();
-    string errorMessage;
+    List<String> errorMessages;
 
     private async Task HandleSignup()
     {
@@ -97,13 +105,36 @@
 
         if (response.IsSuccessStatusCode)
         {
-            //Redirect to login page on successful signup
+            // Redirect to login page on successful signup
             NavigationManager.NavigateTo("/login");
         }
         else
         {
-            //Handle unsuccessful signup (e.g., display error message)
-            errorMessage = "An error occurred while signing up. Please try again.";
+            // Handle unsuccessful signup (e.g., display error messages)
+            var content = await response.Content.ReadAsStringAsync();
+            var doc = JsonDocument.Parse(content);
+            errorMessages = ExtractErrorMessages(doc);
         }
+    }
+
+    private List<string> ExtractErrorMessages(JsonDocument doc)
+    {
+        var errorMessages = new List<string>();
+
+        if (doc.RootElement.TryGetProperty("errors", out var errorsElement))
+        {
+            foreach (var property in errorsElement.EnumerateObject())
+            {
+                if (property.Value.ValueKind == JsonValueKind.Array)
+                {
+                    foreach (var error in property.Value.EnumerateArray())
+                    {
+                        errorMessages.Add(error.GetString());
+                    }
+                }
+            }
+        }
+
+        return errorMessages;
     }
 }
