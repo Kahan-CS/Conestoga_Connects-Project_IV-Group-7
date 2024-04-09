@@ -10,3 +10,11 @@ CLIENT: Requesting user dummy1
 SERVER: Sending user dummy1
 CLIENT: Login attempt for username: dummy1
 SERVER: Login successful for username: dummy1
+CLIENT: Login attempt for username: askjdfguasjddhfoi;asdd
+SERVER: Login failed for username: askjdfguasjddhfoi;asdd
+CLIENT: Login attempt for username: dummy1
+SERVER: Login successful for username: dummy1
+CLIENT: Signup attempt for username: Dummy2
+SERVER: Signup successful for username: Dummy2
+CLIENT: Login attempt for username: Dummy2
+SERVER: Login successful for username: Dummy2
