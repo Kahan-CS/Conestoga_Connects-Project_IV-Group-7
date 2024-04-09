@@ -39,6 +39,7 @@ Title "Git Development Workflow"
 rectangle "main"
 
 rectangle "dev"
+rectangle "testing"
 
 rectangle "dev-backend"
 rectangle "dev-backend-jon"
@@ -50,13 +51,14 @@ rectangle "dev-gui-gitesh"
 rectangle "dev-gui-kalp"
 
 "main"				<--		"dev"
+"testing"			<--		"dev"
 "dev"				<--		"dev-gui"
 "dev"				<--		"dev-backend"
-"dev-backend"		<--		"dev-backend-jon"
-"dev-backend"		<--		"dev-backend-kahan"
 "dev-gui"			<--		"dev-gui-devon"
 "dev-gui"			<--		"dev-gui-gitesh"
 "dev-gui"			<--		"dev-gui-kalp"
+"dev-backend"		<--		"dev-backend-jon"
+"dev-backend"		<--		"dev-backend-kahan"
 
 @enduml
 
