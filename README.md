@@ -31,6 +31,7 @@ The concept is to create a tailored peer networking platform, made by and for st
 ## Contributing
 
 Please create your own branch as needed.  The diagram below should provide a useful guide to our workflow.
+(Correction: Testing branch is downstream of dev, and not upstream as in the png file, which would be updated soon)
 
 ![Git Workflow](images/flowchart.png)
 
