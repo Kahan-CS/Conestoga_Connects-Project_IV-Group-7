@@ -1,4 +1,4 @@
-#### -- Project IV: Group 7 presents... --
+#### -- Group 7 presents... Project IV: --
 # Conestoga Connects
 
 ## Table of Contents
@@ -24,9 +24,9 @@ The concept is to create a tailored peer networking platform, made by and for st
 
 ## Technical Details
 
-- programmed in C# Blazor framework
-- MongoDB database
-- testing with bUnit, MSTest, JMeter, and Selenium WebDriver
+- programmed in C# Blazor framework, using `Blazor Webassembly Standalone App` as template.
+- MongoDB Atlas database
+- testing with BUnit (for GUI), NUnit (For Server app), MSTest (For general unit testing), JMeter (performance and load testing), and Selenium WebDriver.
 
 ## Contributing
 
