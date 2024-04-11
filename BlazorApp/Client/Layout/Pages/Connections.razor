@@ -3,6 +3,7 @@
 @using BlazorApp.Shared
 @using BlazorApp.Shared
 @using BlazorApp.Client.Layout.PageComponents
+@using System.Net.Http.Json
 
 <head>
     <title>Conestoga Connects</title>
@@ -14,56 +15,29 @@
         <NavBar/>
     </header>
     <div class="container">
-        <FriendSection contacts="@friends" Title="Friends" Width="46vw" Height="80vh"/>
-        <ContactSection contacts="@findNew" Title="Find New" Width="46vw" Height="80vh"/>
+        @if (AllUsers != null)
+        {
+        <FriendSection contacts="@AllUsers" Title="Friends" Width="46vw" Height="80vh"/>
+        <ContactSection contacts="@AllUsers" Title="Find New" Width="46vw" Height="80vh"/>
+        }
+        else
+        {
+        <p>Loading...</p>
+        }
     </div>
 </body>
 
 @code {
+    private HttpClient httpClient;
+    public List<ContactModel> AllUsers { get; set; }
 
-    public List<ContactModel> friends = new List<ContactModel>()
-{
-    new ContactModel() { Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Jane Smith", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Michael Johnson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Emily Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "William Jones", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Olivia Taylor", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "James Wilson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Sophia Martinez", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Benjamin Anderson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Isabella Thomas", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Ethan Jackson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Mia White", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Alexander Harris", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Charlotte Martin", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Noah Thompson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Amelia Garcia", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Liam Martinez", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Ava Brown", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Lucas Wilson", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" },
-    new ContactModel() { Name = "Emma Taylor", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png" }
-};
-
-
-    List<ContactModel> findNew = new List<ContactModel>()
+    protected override async Task OnInitializedAsync()
     {
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-        new ContactModel() {Name = "John Doe", ImageUrl = "https://www.w3schools.com/howto/img_avatar.png"},
-    };
+        httpClient = new HttpClient();
+        // Get the list of all users
+        AllUsers = await httpClient.GetFromJsonAsync<List<ContactModel>>("https://localhost:7052/api/users");
 
+    }
 }
 
 <style>

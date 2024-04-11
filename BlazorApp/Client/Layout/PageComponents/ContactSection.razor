@@ -4,13 +4,13 @@
 <div class="ContactSection">
     <div class="ContactHeader">
         <TitleComponent Title="@Title" Level=3/>
-        <input type="text" class="SearchInput" @bind="SearchQuery" placeholder="Search..." @oninput="HandleSearchInput" />
+        <input type="text" class="SearchInput" @bind="SearchQuery" placeholder="Search..." @oninput="HandleSearchInput"  />
     </div>
     <hr>
      <div class="ContactListContainer">
         @if (FilteredContacts != null && FilteredContacts.Any())
         {
-                <ContactList Contacts="@FilteredContacts" Height="@Height" Width="@Width"/>
+                <ContactList Contacts="@FilteredContacts" Height="@Height" Width="@Width" OnContactSelected="@OnContactSelected"/>
         }
         else
         {
@@ -30,6 +30,7 @@
 
     .ContactListContainer {
     min-height: @Height; /* Adjust the minimum height as needed */
+    min-width: @Width; /* Adjust the minimum width as needed */
 }
 
 .EmptyListMessage {
@@ -69,6 +70,9 @@
     public string Title { get; set; }
 
     [Parameter]
+    public bool IsForSearching { get; set; }
+
+    [Parameter]
     public List<ContactModel> Contacts { get; set; }
 
 
@@ -78,6 +82,15 @@
     private string SearchQuery { get; set; } = ""; //The search query entered by the user
 
     private List<ContactModel> FilteredContacts { get; set; } //The contacts that match the search query
+
+    [Parameter]
+    public EventCallback<ContactModel> OnContactSelected { get; set; }
+
+    private async Task HandleContactClicked(ContactModel clickedContact)
+    {
+        // Forward the event callback to the parent component
+        await OnContactSelected.InvokeAsync(clickedContact);
+    }
 
     protected override void OnInitialized()
     {
@@ -103,7 +116,7 @@
     private void SearchContacts()
     {
         FilteredContacts = Contacts
-            .Where(c => string.IsNullOrWhiteSpace(SearchQuery) || c.Name.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
+            .Where(c => string.IsNullOrWhiteSpace(SearchQuery) || c.Username.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
             .ToList();
     }
 }

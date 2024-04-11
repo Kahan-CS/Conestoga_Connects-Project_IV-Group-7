@@ -18,7 +18,7 @@
 
 
 <div class="container">
-    <ContactSection contacts="@Contacts" Title="Messages" Width="30vw" Height="81vh"/>
+    <ContactSection contacts="@Contacts" Title="Messages" Width="30vw" Height="81vh" IsForSearching = "@false" OnContactSelected="@HandleContactClicked"/>
     <MessageSection messages="@MessageList" Width="63.5vw" Height="81vh"/>
 </div>
 
@@ -77,6 +77,38 @@
         new MessageModel() { SenderName = "Jane Doe", Content = "Hello, I am Jane Doe", IsSent = false, Time = DateTime.Now, SenderProfileImageUrl = "https://www.w3schools.com/howto/img_avatar.png"  },
 
     };
+
+    private ContactModel SelectedContact { get; set; }
+    private ContactModel loggedInUser { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        // Retrieve the loggedInUser parameter from the query string
+        var uri = new Uri(NavigationManager.Uri);
+        var queryParameters = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        var loggedInUser = queryParameters["loggedInUser"];
+
+        if (!string.IsNullOrEmpty(loggedInUser))
+        {
+            this.loggedInUser = new ContactModel
+                {
+                    Name = loggedInUser,
+                    ImageUrl = "", // Add the image URL if needed
+                    IntroText = "" // Add the intro text if needed
+                };
+        }
+    }
+    
+
+    private async Task HandleContactClicked(ContactModel clickedContact)
+    {
+        // Clear the message list when a contact is clicked
+        MessageList.Clear();
+        SelectedContact = clickedContact; // Set the selected contact
+        StateHasChanged();
+    }
 
     void SendMessage()
     {

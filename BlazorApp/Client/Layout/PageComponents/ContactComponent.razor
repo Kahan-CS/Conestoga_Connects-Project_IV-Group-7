@@ -7,10 +7,10 @@
 </head>
 
 <div class="contact" @onclick="HandleClick">
-    <ProfileImageComponent ImageUrl="@contactModel.ImageUrl" Size="50px"/>
+    <ProfileImageComponent ImageUrl="@ContactModel.ImageUrl" Size="50px"/>
     <div class="contact-name"> <!--Div used to display the element on two different lines-->
-        <p><b>@contactModel.Name</b></p>
-        <p class="intro-text">@contactModel.IntroText</p>
+        <p><b>@ContactModel.Name</b></p>
+        <p class="intro-text">@ContactModel.IntroText</p>
     </div>
 </div>
 
@@ -42,10 +42,13 @@
 
 @code {
     [Parameter]
-    public ContactModel contactModel { get; set; }
+    public ContactModel ContactModel { get; set; }
 
     [Parameter]
-    public EventCallback OnClick { get; set; }
+    public bool IsForSearching { get; set; }
+
+    [Parameter]
+    public EventCallback<ContactModel> OnContactSelected { get; set; }
 
 
     private async Task HandleClick()

@@ -12,9 +12,11 @@ namespace BlazorApp.Server.Controllers
     public class SignupController : ControllerBase
     {
         private readonly UserService _userService;
+        private readonly Logger logger;
         public SignupController(UserService userService)
         {
             _userService = userService;
+            logger = new Logger();
         }
 
         [Route("signup")]
